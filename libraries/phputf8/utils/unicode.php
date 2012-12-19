@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
 * @version $Id$
 * Tools for conversion between UTF-8 and unicode

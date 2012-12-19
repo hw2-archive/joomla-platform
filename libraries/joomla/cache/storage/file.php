@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Cache
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * File cache storage handler
@@ -268,7 +268,7 @@ class JCacheStorageFile extends JCacheStorage
 	 */
 	public function lock($id, $group, $locktime)
 	{
-		$returning = new stdClass;
+		$returning = new \stdClass;
 		$returning->locklooped = false;
 
 		$looptime = $locktime * 10;

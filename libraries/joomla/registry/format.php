@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Registry
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Abstract Format for JRegistry
@@ -46,7 +46,7 @@ abstract class JRegistryFormat
 			// Only load the file the class does not exist.
 			$class = 'JRegistryFormat' . $type;
 
-			if (!class_exists($class))
+			if (!my_class_exists($class))
 			{
 				$path = __DIR__ . '/format/' . $type . '.php';
 

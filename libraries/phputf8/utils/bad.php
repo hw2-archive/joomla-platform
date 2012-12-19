@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
 * @version $Id$
 * Tools for locating / replacing bad bytes in UTF-8 strings
@@ -177,7 +177,7 @@ function utf8_bad_replace($str, $replace = '?') {
 * @package utf8
 * @subpackage bad
 */
-define('UTF8_BAD_5OCTET',1);
+my_define('UTF8_BAD_5OCTET',1);
 
 /**
 * Return code from utf8_bad_identify() when a six octet sequence is detected.
@@ -187,7 +187,7 @@ define('UTF8_BAD_5OCTET',1);
 * @package utf8
 * @subpackage bad
 */
-define('UTF8_BAD_6OCTET',2);
+my_define('UTF8_BAD_6OCTET',2);
 
 /**
 * Return code from utf8_bad_identify().
@@ -196,7 +196,7 @@ define('UTF8_BAD_6OCTET',2);
 * @package utf8
 * @subpackage bad
 */
-define('UTF8_BAD_SEQID',3);
+my_define('UTF8_BAD_SEQID',3);
 
 /**
 * Return code from utf8_bad_identify().
@@ -205,7 +205,7 @@ define('UTF8_BAD_SEQID',3);
 * @package utf8
 * @subpackage bad
 */
-define('UTF8_BAD_NONSHORT',4);
+my_define('UTF8_BAD_NONSHORT',4);
 
 /**
 * Return code from utf8_bad_identify().
@@ -214,7 +214,7 @@ define('UTF8_BAD_NONSHORT',4);
 * @package utf8
 * @subpackage bad
 */
-define('UTF8_BAD_SURROGATE',5);
+my_define('UTF8_BAD_SURROGATE',5);
 
 /**
 * Return code from utf8_bad_identify().
@@ -223,7 +223,7 @@ define('UTF8_BAD_SURROGATE',5);
 * @package utf8
 * @subpackage bad
 */
-define('UTF8_BAD_UNIOUTRANGE',6);
+my_define('UTF8_BAD_UNIOUTRANGE',6);
 
 /**
 * Return code from utf8_bad_identify().
@@ -233,7 +233,7 @@ define('UTF8_BAD_UNIOUTRANGE',6);
 * @package utf8
 * @subpackage bad
 */
-define('UTF8_BAD_SEQINCOMPLETE',7);
+my_define('UTF8_BAD_SEQINCOMPLETE',7);
 
 //--------------------------------------------------------------------
 /**

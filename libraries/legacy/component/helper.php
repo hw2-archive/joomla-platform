@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Legacy
  * @subpackage  Component
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Component helper class
@@ -47,7 +47,7 @@ class JComponentHelper
 			}
 			else
 			{
-				$result = new stdClass;
+				$result = new \stdClass;
 				$result->enabled = $strict ? false : true;
 				$result->params = new JRegistry;
 			}
@@ -313,9 +313,9 @@ class JComponentHelper
 		$file = substr($option, 4);
 
 		// Define component path.
-		define('JPATH_COMPONENT', JPATH_BASE . '/components/' . $option);
-		define('JPATH_COMPONENT_SITE', JPATH_SITE . '/components/' . $option);
-		define('JPATH_COMPONENT_ADMINISTRATOR', JPATH_ADMINISTRATOR . '/components/' . $option);
+		my_define('JPATH_COMPONENT', JPATH_BASE . '/components/' . $option);
+		my_define('JPATH_COMPONENT_SITE', JPATH_SITE . '/components/' . $option);
+		my_define('JPATH_COMPONENT_ADMINISTRATOR', JPATH_ADMINISTRATOR . '/components/' . $option);
 
 		$path = JPATH_COMPONENT . '/' . $file . '.php';
 

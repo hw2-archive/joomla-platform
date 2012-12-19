@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Updater
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Update class.
@@ -128,13 +128,13 @@ class JUpdate extends JObject
 	protected $stateStore = array();
 
 	/**
-	 * @var    stdClass
+	 * @var    \stdClass
 	 * @since  12.1
 	 */
 	protected $currentUpdate;
 
 	/**
-	 * @var    stdClass
+	 * @var    \stdClass
 	 * @since  12.1
 	 */
 	protected $latest;
@@ -187,7 +187,7 @@ class JUpdate extends JObject
 		{
 			// This is a new update; create a current update
 			case 'UPDATE':
-				$this->currentUpdate = new stdClass;
+				$this->currentUpdate = new \stdClass;
 				break;
 
 			// Don't do anything

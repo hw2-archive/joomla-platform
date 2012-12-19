@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Input
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Joomla! Input Base Class
@@ -37,7 +37,7 @@ defined('JPATH_PLATFORM') or die;
  * @method      string   getPath()      getPath($name, $default = null)
  * @method      string   getUsername()  getUsername($name, $default = null)
  */
-class JInput implements Serializable, Countable
+class JInput implements \Serializable, \Countable
 {
 	/**
 	 * Options array for the JInput instance.
@@ -121,7 +121,7 @@ class JInput implements Serializable, Countable
 
 		$className = 'JInput' . ucfirst($name);
 
-		if (class_exists($className))
+		if (my_class_exists($className))
 		{
 			$this->inputs[$name] = new $className(null, $this->options);
 

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  HTTP
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * HTTP transport class for using sockets directly.
@@ -153,7 +153,7 @@ class JHttpTransportSocket implements JHttpTransport
 	 * @return  JHttpResponse
 	 *
 	 * @since   11.3
-	 * @throws  UnexpectedValueException
+	 * @throws  \UnexpectedValueException
 	 */
 	protected function getResponse($content)
 	{
@@ -162,7 +162,7 @@ class JHttpTransportSocket implements JHttpTransport
 
 		if (empty($content))
 		{
-			throw new UnexpectedValueException('No content in response.');
+			throw new \UnexpectedValueException('No content in response.');
 		}
 
 		// Split the response into headers and body.
@@ -186,7 +186,7 @@ class JHttpTransportSocket implements JHttpTransport
 		// No valid response code was detected.
 		else
 		{
-			throw new UnexpectedValueException('No HTTP response code found.');
+			throw new \UnexpectedValueException('No HTTP response code found.');
 		}
 
 		// Add the response headers to the response object.

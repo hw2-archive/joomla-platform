@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Database
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * MySQL database driver
@@ -307,7 +307,7 @@ class JDatabaseDriverMysql extends JDatabaseDriverMysqli
 
 				// Throw the normal query exception.
 				JLog::add(JText::sprintf('JLIB_DATABASE_QUERY_FAILED', $this->errorNum, $this->errorMsg), JLog::ERROR, 'databasequery');
-				throw new RuntimeException($this->errorMsg, $this->errorNum);
+				throw new \RuntimeException($this->errorMsg, $this->errorNum);
 			}
 		}
 
@@ -393,7 +393,7 @@ class JDatabaseDriverMysql extends JDatabaseDriverMysqli
 	 *
 	 * @since   12.1
 	 */
-	protected function fetchObject($cursor = null, $class = 'stdClass')
+	protected function fetchObject($cursor = null, $class = '\stdClass')
 	{
 		return mysql_fetch_object($cursor ? $cursor : $this->cursor, $class);
 	}

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Database
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Joomla Platform Database Interface
@@ -201,7 +201,7 @@ abstract class JDatabaseDriver extends JDatabase implements JDatabaseInterface
 			$class = str_ireplace('.php', '', 'JDatabaseDriver' . ucfirst(trim($fileName)));
 
 			// If the class doesn't exist we have nothing left to do but look at the next type. We did our best.
-			if (!class_exists($class))
+			if (!my_class_exists($class))
 			{
 				continue;
 			}
@@ -251,9 +251,9 @@ abstract class JDatabaseDriver extends JDatabase implements JDatabaseInterface
 			$class = 'JDatabaseDriver' . ucfirst(strtolower($options['driver']));
 
 			// If the class still doesn't exist we have nothing left to do but throw an exception.  We did our best.
-			if (!class_exists($class))
+			if (!my_class_exists($class))
 			{
-				throw new RuntimeException(sprintf('Unable to load Database Driver: %s', $options['driver']));
+				throw new \RuntimeException(sprintf('Unable to load Database Driver: %s', $options['driver']));
 			}
 
 			// Create our new JDatabaseDriver connector based on the options given.
@@ -263,7 +263,7 @@ abstract class JDatabaseDriver extends JDatabase implements JDatabaseInterface
 			}
 			catch (RuntimeException $e)
 			{
-				throw new RuntimeException(sprintf('Unable to connect to the Database: %s', $e->getMessage()));
+				throw new \RuntimeException(sprintf('Unable to connect to the Database: %s', $e->getMessage()));
 			}
 
 			// Set the new connector to the global instances based on signature.
@@ -465,7 +465,7 @@ abstract class JDatabaseDriver extends JDatabase implements JDatabaseInterface
 	 *
 	 * @since   11.1
 	 */
-	abstract protected function fetchObject($cursor = null, $class = 'stdClass');
+	abstract protected function fetchObject($cursor = null, $class = '\stdClass');
 
 	/**
 	 * Method to free up the memory used for the result set.
@@ -618,7 +618,7 @@ abstract class JDatabaseDriver extends JDatabase implements JDatabaseInterface
 		$class = 'JDatabaseExporter' . ucfirst($this->name);
 
 		// Make sure we have an exporter class for this driver.
-		if (!class_exists($class))
+		if (!my_class_exists($class))
 		{
 			// If it doesn't exist we are at an impasse so throw an exception.
 			throw new RuntimeException('Database Exporter not found.');
@@ -644,7 +644,7 @@ abstract class JDatabaseDriver extends JDatabase implements JDatabaseInterface
 		$class = 'JDatabaseImporter' . ucfirst($this->name);
 
 		// Make sure we have an importer class for this driver.
-		if (!class_exists($class))
+		if (!my_class_exists($class))
 		{
 			// If it doesn't exist we are at an impasse so throw an exception.
 			throw new RuntimeException('Database Importer not found');
@@ -674,7 +674,7 @@ abstract class JDatabaseDriver extends JDatabase implements JDatabaseInterface
 			$class = 'JDatabaseQuery' . ucfirst($this->name);
 
 			// Make sure we have a query class for this driver.
-			if (!class_exists($class))
+			if (!my_class_exists($class))
 			{
 				// If it doesn't exist we are at an impasse so throw an exception.
 				throw new RuntimeException('Database Query Class not found.');
@@ -699,13 +699,13 @@ abstract class JDatabaseDriver extends JDatabase implements JDatabaseInterface
 	 * @since   12.1
 	 * @throws  RuntimeException
 	 */
-	public function getIterator($column = null, $class = 'stdClass')
+	public function getIterator($column = null, $class = '\stdClass')
 	{
 		// Derive the class name from the driver.
 		$iteratorClass = 'JDatabaseIterator' . ucfirst($this->name);
 
 		// Make sure we have an iterator class for this driver.
-		if (!class_exists($iteratorClass))
+		if (!my_class_exists($iteratorClass))
 		{
 			// If it doesn't exist we are at an impasse so throw an exception.
 			throw new RuntimeException(sprintf('class *%s* is not defined', $iteratorClass));
@@ -994,7 +994,7 @@ abstract class JDatabaseDriver extends JDatabase implements JDatabaseInterface
 	 * @since   11.1
 	 * @throws  RuntimeException
 	 */
-	public function loadNextObject($class = 'stdClass')
+	public function loadNextObject($class = '\stdClass')
 	{
 		JLog::add(__METHOD__ . '() is deprecated. Use JDatabase::getIterator() instead.', JLog::WARNING, 'deprecated');
 		$this->connect();
@@ -1070,7 +1070,7 @@ abstract class JDatabaseDriver extends JDatabase implements JDatabaseInterface
 	 * @since   11.1
 	 * @throws  RuntimeException
 	 */
-	public function loadObject($class = 'stdClass')
+	public function loadObject($class = '\stdClass')
 	{
 		$this->connect();
 
@@ -1109,7 +1109,7 @@ abstract class JDatabaseDriver extends JDatabase implements JDatabaseInterface
 	 * @since   11.1
 	 * @throws  RuntimeException
 	 */
-	public function loadObjectList($key = '', $class = 'stdClass')
+	public function loadObjectList($key = '', $class = '\stdClass')
 	{
 		$this->connect();
 

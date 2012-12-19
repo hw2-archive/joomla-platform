@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package    Joomla.Platform
  *
@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Joomla Platform Factory class
@@ -98,7 +98,7 @@ abstract class JFactory
 		{
 			if (!$id)
 			{
-				throw new Exception('Application Instantiation Error', 500);
+				throw new \Exception('Application Instantiation Error', 500);
 			}
 
 			self::$application = JApplication::getInstance($id, $config, $prefix);
@@ -347,7 +347,7 @@ abstract class JFactory
 	 */
 	public static function getFeedParser($url, $cache_time = 0)
 	{
-		if (!class_exists('JSimplepieFactory'))
+		if (!my_class_exists('JSimplepieFactory'))
 		{
 			throw new BadMethodCallException('JSimplepieFactory not found');
 		}
@@ -376,7 +376,7 @@ abstract class JFactory
 
 		$class = 'SimpleXMLElement';
 
-		if (class_exists('JXMLElement'))
+		if (my_class_exists('JXMLElement'))
 		{
 			$class = 'JXMLElement';
 		}
@@ -428,7 +428,7 @@ abstract class JFactory
 	{
 		JLog::add(__METHOD__ . ' is deprecated. CMS developers should use JEditor directly.', JLog::WARNING, 'deprecated');
 
-		if (!class_exists('JEditor'))
+		if (!my_class_exists('JEditor'))
 		{
 			throw new BadMethodCallException('JEditor not found');
 		}
@@ -491,7 +491,7 @@ abstract class JFactory
 			{
 				$classname = str_replace('-', '_', $mainLocale) . 'Date';
 
-				if (!class_exists($classname))
+				if (!my_class_exists($classname))
 				{
 					// The class does not exist, default to JDate
 					$classname = 'JDate';
@@ -545,7 +545,7 @@ abstract class JFactory
 		$name = 'JConfig' . $namespace;
 
 		// Handle the PHP configuration type.
-		if ($type == 'PHP' && class_exists($name))
+		if ($type == 'PHP' && my_class_exists($name))
 		{
 			// Create the JConfig object
 			$config = new $name;

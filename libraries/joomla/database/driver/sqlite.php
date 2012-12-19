@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Database
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * SQLite database driver
@@ -379,7 +379,7 @@ class JDatabaseDriverSqlite extends JDatabaseDriverPdo
 	 */
 	public static function isSupported()
 	{
-		return class_exists('PDO') && in_array('sqlite', PDO::getAvailableDrivers());
+		return my_class_exists('PDO') && in_array('sqlite', PDO::getAvailableDrivers());
 	}
 
 	/**

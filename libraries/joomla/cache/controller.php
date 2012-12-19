@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Cache
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Public cache handler
@@ -88,7 +88,7 @@ class JCacheController
 
 		$class = 'JCacheController' . ucfirst($type);
 
-		if (!class_exists($class))
+		if (!my_class_exists($class))
 		{
 			// Search for the class file in the JCache include paths.
 			jimport('joomla.filesystem.path');
@@ -177,7 +177,7 @@ class JCacheController
 
 		if ($data === false)
 		{
-			$locktest = new stdClass;
+			$locktest = new \stdClass;
 			$locktest->locked = null;
 			$locktest->locklooped = null;
 			$locktest = $this->cache->lock($id, $group);
@@ -214,7 +214,7 @@ class JCacheController
 	 */
 	public function store($data, $id, $group = null)
 	{
-		$locktest = new stdClass;
+		$locktest = new \stdClass;
 		$locktest->locked = null;
 		$locktest->locklooped = null;
 

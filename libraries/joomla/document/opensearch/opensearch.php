@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Document
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * OpenSearch class, provides an easy interface to display an OpenSearch document
@@ -111,7 +111,7 @@ class JDocumentOpensearch extends JDocument
 	{
 		$xml = new DOMDocument('1.0', 'utf-8');
 
-		if (defined('JDEBUG') && JDEBUG)
+		if (my_defined('JDEBUG') && JDEBUG)
 		{
 			$xml->formatOutput = true;
 		}

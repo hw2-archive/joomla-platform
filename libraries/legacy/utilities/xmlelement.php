@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Legacy
  * @subpackage  Utilities
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 JLog::add('JXMLElement is deprecated. Use SimpleXMLElement.', JLog::WARNING, 'deprecated');
 

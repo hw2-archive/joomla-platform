@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Legacy
  * @subpackage  Error
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 // Error Definition: Illegal Options
 const JERROR_ILLEGAL_OPTIONS = 1;
@@ -203,9 +203,9 @@ abstract class JError
 
 		$function = 'handle' . ucfirst($handler['mode']);
 
-		if (is_callable(array('JError', $function)))
+		if (is_callable(array('Hwj\JError', $function)))
 		{
-			$reference = call_user_func_array(array('JError', $function), array(&$exception, (isset($handler['options'])) ? $handler['options'] : array()));
+			$reference = call_user_func_array(array('Hwj\JError', $function), array(&$exception, (isset($handler['options'])) ? $handler['options'] : array()));
 		}
 		else
 		{
@@ -527,7 +527,7 @@ abstract class JError
 		$level_human = self::translateErrorLevel($error->get('level'));
 
 		// If system debug is set, then output some more information.
-		if (defined('JDEBUG'))
+		if (my_defined('JDEBUG'))
 		{
 			$backtrace = $error->getTrace();
 			$trace = '';
@@ -555,16 +555,16 @@ abstract class JError
 			// Output as html
 			echo "<br /><b>jos-$level_human</b>: "
 				. $error->get('message') . "<br />\n"
-				. (defined('JDEBUG') ? nl2br($trace) : '');
+				. (my_defined('JDEBUG') ? nl2br($trace) : '');
 		}
 		else
 		{
 			// Output as simple text
-			if (defined('STDERR'))
+			if (my_defined('STDERR'))
 			{
 				fwrite(STDERR, "J$level_human: " . $error->get('message') . "\n");
 
-				if (defined('JDEBUG'))
+				if (my_defined('JDEBUG'))
 				{
 					fwrite(STDERR, $trace);
 				}
@@ -573,7 +573,7 @@ abstract class JError
 			{
 				echo "J$level_human: " . $error->get('message') . "\n";
 
-				if (defined('JDEBUG'))
+				if (my_defined('JDEBUG'))
 				{
 					echo $trace;
 				}
@@ -657,7 +657,7 @@ abstract class JError
 		else
 		{
 			// Output as simple text
-			if (defined('STDERR'))
+			if (my_defined('STDERR'))
 			{
 				fwrite(STDERR, "J$level_human: " . $error->get('message') . "\n");
 				jexit();

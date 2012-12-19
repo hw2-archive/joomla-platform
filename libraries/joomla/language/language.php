@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Language
@@ -7,12 +7,12 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Allows for quoting in language .ini files.
  */
-define('_QQ_', '"');
+my_define('_QQ_', '"');
 
 /**
  * Languages/translation handler class
@@ -186,14 +186,14 @@ class JLanguage
 		$class = str_replace('-', '_', $lang . 'Localise');
 		$paths = array();
 
-		if (defined('JPATH_SITE'))
+		if (my_defined('JPATH_SITE'))
 		{
 			// Note: Manual indexing to enforce load order.
 			$paths[0] = JPATH_SITE . "/language/overrides/$lang.localise.php";
 			$paths[2] = JPATH_SITE . "/language/$lang/$lang.localise.php";
 		}
 
-		if (defined('JPATH_ADMINISTRATOR'))
+		if (my_defined('JPATH_ADMINISTRATOR'))
 		{
 			// Note: Manual indexing to enforce load order.
 			$paths[1] = JPATH_ADMINISTRATOR . "/language/overrides/$lang.localise.php";
@@ -203,7 +203,7 @@ class JLanguage
 		ksort($paths);
 		$path = reset($paths);
 
-		while (!class_exists($class) && $path)
+		while (!my_class_exists($class) && $path)
 		{
 			if (file_exists($path))
 			{
@@ -212,7 +212,7 @@ class JLanguage
 			$path = next($paths);
 		}
 
-		if (class_exists($class))
+		if (my_class_exists($class))
 		{
 			/* Class exists. Try to find
 			 * -a transliterate method,

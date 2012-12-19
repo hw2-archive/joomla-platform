@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Date
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * JDate is a class that stores a date and provides logic to manipulate
@@ -30,7 +30,7 @@ defined('JPATH_PLATFORM') or die;
  * @subpackage  Date
  * @since       11.1
  */
-class JDate extends DateTime
+class JDate extends \DateTime
 {
 	const DAY_ABBR = "\x021\x03";
 	const DAY_NAME = "\x022\x03";
@@ -83,12 +83,12 @@ class JDate extends DateTime
 		// Create the base GMT and server time zone objects.
 		if (empty(self::$gmt) || empty(self::$stz))
 		{
-			self::$gmt = new DateTimeZone('GMT');
-			self::$stz = new DateTimeZone(@date_default_timezone_get());
+			self::$gmt = new \DateTimeZone('GMT');
+			self::$stz = new \DateTimeZone(@date_default_timezone_get());
 		}
 
 		// If the time zone object is not set, attempt to build it.
-		if (!($tz instanceof DateTimeZone))
+		if (!($tz instanceof \DateTimeZone))
 		{
 			if ($tz === null)
 			{
@@ -96,7 +96,7 @@ class JDate extends DateTime
 			}
 			elseif (is_string($tz))
 			{
-				$tz = new DateTimeZone($tz);
+				$tz = new \DateTimeZone($tz);
 			}
 		}
 

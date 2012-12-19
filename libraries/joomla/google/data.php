@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Google
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Google API data class for the Joomla Platform.
@@ -76,7 +76,7 @@ abstract class JGoogleData
 	 * @return  SimpleXMLElement  XMLElement of parsed data
 	 *
 	 * @since   12.3
-	 * @throws UnexpectedValueException
+	 * @throws \UnexpectedValueException
 	 */
 	protected static function safeXML($data)
 	{
@@ -86,7 +86,7 @@ abstract class JGoogleData
 		}
 		catch (Exception $e)
 		{
-			throw new UnexpectedValueException("Unexpected data received from Google: `$data`.");
+			throw new \UnexpectedValueException("Unexpected data received from Google: `$data`.");
 		}
 	}
 
@@ -100,7 +100,7 @@ abstract class JGoogleData
 	 * @return  mixed  Data from Google
 	 *
 	 * @since   12.3
-	 * @throws UnexpectedValueException
+	 * @throws \UnexpectedValueException
 	 */
 	protected function listGetData($url, $maxpages = 1, $token = null)
 	{
@@ -131,7 +131,7 @@ abstract class JGoogleData
 		}
 		else
 		{
-			throw new UnexpectedValueException("Unexpected data received from Google: `{$jdata->body}`.");
+			throw new \UnexpectedValueException("Unexpected data received from Google: `{$jdata->body}`.");
 		}
 	}
 

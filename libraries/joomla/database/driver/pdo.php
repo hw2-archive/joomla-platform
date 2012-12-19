@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Database
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Joomla Platform PDO Database Driver Class
@@ -519,7 +519,7 @@ abstract class JDatabaseDriverPdo extends JDatabaseDriver
 	 */
 	public static function isSupported()
 	{
-		return defined('PDO::ATTR_DRIVER_NAME');
+		return my_defined('PDO::ATTR_DRIVER_NAME');
 	}
 
 	/**
@@ -822,7 +822,7 @@ abstract class JDatabaseDriverPdo extends JDatabaseDriver
 	 *
 	 * @since   12.1
 	 */
-	protected function fetchObject($cursor = null, $class = 'stdClass')
+	protected function fetchObject($cursor = null, $class = '\stdClass')
 	{
 		if (!empty($cursor) && $cursor instanceof PDOStatement)
 		{
@@ -869,7 +869,7 @@ abstract class JDatabaseDriverPdo extends JDatabaseDriver
 	 * @since   12.1
 	 * @throws  RuntimeException
 	 */
-	public function loadNextObject($class = 'stdClass')
+	public function loadNextObject($class = '\stdClass')
 	{
 		$this->connect();
 

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Legacy
  * @subpackage  Categories
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * JCategories Class.
@@ -136,7 +136,7 @@ class JCategories
 		$section = count($parts) > 1 ? $parts[1] : '';
 		$classname = ucfirst(substr($component, 4)) . ucfirst($section) . 'Categories';
 
-		if (!class_exists($classname))
+		if (!my_class_exists($classname))
 		{
 			$path = JPATH_SITE . '/components/' . $component . '/helpers/category.php';
 

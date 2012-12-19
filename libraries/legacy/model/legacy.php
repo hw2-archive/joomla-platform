@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Legacy
  * @subpackage  Model
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Base class for a Joomla Model
@@ -172,7 +172,7 @@ abstract class JModelLegacy extends JObject
 		$type = preg_replace('/[^A-Z0-9_\.-]/i', '', $type);
 		$modelClass = $prefix . ucfirst($type);
 
-		if (!class_exists($modelClass))
+		if (!my_class_exists($modelClass))
 		{
 			jimport('joomla.filesystem.path');
 			$path = JPath::find(self::addIncludePath(null, $prefix), self::_createFileName('model', array('name' => $type)));
@@ -185,7 +185,7 @@ abstract class JModelLegacy extends JObject
 			{
 				require_once $path;
 
-				if (!class_exists($modelClass))
+				if (!my_class_exists($modelClass))
 				{
 					JLog::add(JText::sprintf('JLIB_APPLICATION_ERROR_MODELCLASS_NOT_FOUND', $modelClass), JLog::WARNING, 'jerror');
 
@@ -263,7 +263,7 @@ abstract class JModelLegacy extends JObject
 		{
 			$this->addTablePath($config['table_path']);
 		}
-		elseif (defined('JPATH_COMPONENT_ADMINISTRATOR'))
+		elseif (my_defined('JPATH_COMPONENT_ADMINISTRATOR'))
 		{
 			$this->addTablePath(JPATH_COMPONENT_ADMINISTRATOR . '/tables');
 		}

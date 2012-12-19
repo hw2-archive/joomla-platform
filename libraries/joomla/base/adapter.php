@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Base
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Adapter Class
@@ -72,7 +72,7 @@ class JAdapter extends JObject
 		$this->_classprefix = $classprefix ? $classprefix : 'J';
 		$this->_adapterfolder = $adapterfolder ? $adapterfolder : 'adapters';
 
-		$this->_db = JFactory::getDBO();
+		$this->_db = JFactory::getDbo();
 	}
 
 	/**
@@ -114,7 +114,7 @@ class JAdapter extends JObject
 
 			$class = $this->_classprefix . ucfirst($name);
 
-			if (!class_exists($class))
+			if (!my_class_exists($class))
 			{
 				return false;
 			}
@@ -183,7 +183,7 @@ class JAdapter extends JObject
 			$name = str_ireplace('.php', '', ucfirst(trim($fileName)));
 			$class = $this->_classprefix . ucfirst($name);
 
-			if (!class_exists($class))
+			if (!my_class_exists($class))
 			{
 				// Skip to next one
 				continue;

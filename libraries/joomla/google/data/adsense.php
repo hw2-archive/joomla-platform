@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Google
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Google Adsense data class for the Joomla Platform.
@@ -59,7 +59,7 @@ class JGoogleDataAdsense extends JGoogleData
 			}
 			else
 			{
-				throw new UnexpectedValueException("Unexpected data received from Google: `{$jdata->body}`.");
+				throw new \UnexpectedValueException("Unexpected data received from Google: `{$jdata->body}`.");
 			}
 		}
 		else
@@ -77,7 +77,7 @@ class JGoogleDataAdsense extends JGoogleData
 	 * @return  mixed  Data from Google
 	 *
 	 * @since   12.3
-	 * @throws UnexpectedValueException
+	 * @throws \UnexpectedValueException
 	 */
 	public function listAccounts($options = array(), $maxpages = 1)
 	{
@@ -105,7 +105,7 @@ class JGoogleDataAdsense extends JGoogleData
 	 * @return  mixed  Data from Google
 	 *
 	 * @since   12.3
-	 * @throws UnexpectedValueException
+	 * @throws \UnexpectedValueException
 	 */
 	public function listClients($accountID, $options = array(), $maxpages = 1)
 	{
@@ -148,7 +148,7 @@ class JGoogleDataAdsense extends JGoogleData
 			}
 			else
 			{
-				throw new UnexpectedValueException("Unexpected data received from Google: `{$jdata->body}`.");
+				throw new \UnexpectedValueException("Unexpected data received from Google: `{$jdata->body}`.");
 			}
 		}
 		else
@@ -169,7 +169,7 @@ class JGoogleDataAdsense extends JGoogleData
 	 * @return  mixed  Data from Google
 	 *
 	 * @since   12.3
-	 * @throws UnexpectedValueException
+	 * @throws \UnexpectedValueException
 	 */
 	public function listUnitChannels($accountID, $adclientID, $adunitID, $options = array(), $maxpages = 1)
 	{
@@ -213,7 +213,7 @@ class JGoogleDataAdsense extends JGoogleData
 			}
 			else
 			{
-				throw new UnexpectedValueException("Unexpected data received from Google: `{$jdata->body}`.");
+				throw new \UnexpectedValueException("Unexpected data received from Google: `{$jdata->body}`.");
 			}
 		}
 		else
@@ -233,7 +233,7 @@ class JGoogleDataAdsense extends JGoogleData
 	 * @return  mixed  Data from Google
 	 *
 	 * @since   12.3
-	 * @throws UnexpectedValueException
+	 * @throws \UnexpectedValueException
 	 */
 	public function listChannels($accountID, $adclientID, $options = array(), $maxpages = 1)
 	{
@@ -264,7 +264,7 @@ class JGoogleDataAdsense extends JGoogleData
 	 * @return  mixed  Data from Google
 	 *
 	 * @since   12.3
-	 * @throws UnexpectedValueException
+	 * @throws \UnexpectedValueException
 	 */
 	public function listChannelUnits($accountID, $adclientID, $channelID, $options = array(), $maxpages = 1)
 	{
@@ -294,7 +294,7 @@ class JGoogleDataAdsense extends JGoogleData
 	 * @return  mixed  Data from Google
 	 *
 	 * @since   12.3
-	 * @throws UnexpectedValueException
+	 * @throws \UnexpectedValueException
 	 */
 	public function listUrlChannels($accountID, $adclientID, $options = array(), $maxpages = 1)
 	{
@@ -325,7 +325,7 @@ class JGoogleDataAdsense extends JGoogleData
 	 * @return  mixed  Data from Google
 	 *
 	 * @since   12.3
-	 * @throws UnexpectedValueException
+	 * @throws \UnexpectedValueException
 	 */
 	public function generateReport($accountID, $start, $end = false, $options = array(), $maxpages = 1)
 	{
@@ -399,7 +399,7 @@ class JGoogleDataAdsense extends JGoogleData
 				}
 				else
 				{
-					throw new UnexpectedValueException("Unexpected data received from Google: `{$jdata->body}`.");
+					throw new \UnexpectedValueException("Unexpected data received from Google: `{$jdata->body}`.");
 				}
 
 				$i++;

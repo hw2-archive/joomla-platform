@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Database
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * PostgreSQL export driver.
@@ -67,7 +67,7 @@ class JDatabaseExporterPostgresql extends JDatabaseExporter
 	 */
 	public function __construct()
 	{
-		$this->options = new stdClass;
+		$this->options = new \stdClass;
 
 		$this->cache = array('columns' => array(), 'keys' => array());
 

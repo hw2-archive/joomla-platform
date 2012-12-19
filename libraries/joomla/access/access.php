@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Access
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 jimport('joomla.utilities.arrayhelper');
 
@@ -289,7 +289,7 @@ class JAccess
 		if (!isset(self::$groupsByUser[$storeId]))
 		{
 			// TODO: Uncouple this from JComponentHelper and allow for a configuration setting or value injection.
-			if (class_exists('JComponentHelper'))
+			if (my_class_exists('JComponentHelper'))
 			{
 				$guestUsergroup = JComponentHelper::getParams('com_users')->get('guest_usergroup', 1);
 			}
@@ -407,7 +407,7 @@ class JAccess
 		if (empty(self::$viewLevels))
 		{
 			// Get a database object.
-			$db = JFactory::getDBO();
+			$db = JFactory::getDbo();
 
 			// Build the base query.
 			$query = $db->getQuery(true);

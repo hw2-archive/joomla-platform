@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Cache
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Joomla! Cache base object
@@ -113,7 +113,7 @@ class JCache
 			$class = str_ireplace('.php', '', 'JCacheStorage' . ucfirst(trim($fileName)));
 
 			// If the class doesn't exist we have nothing left to do but look at the next type. We did our best.
-			if (!class_exists($class))
+			if (!my_class_exists($class))
 			{
 				continue;
 			}
@@ -326,7 +326,7 @@ class JCache
 	 */
 	public function lock($id, $group = null, $locktime = null)
 	{
-		$returning = new stdClass;
+		$returning = new \stdClass;
 		$returning->locklooped = false;
 
 		// Get the default group
@@ -679,7 +679,7 @@ class JCache
 		$registeredurlparams->tpl = 'CMD';
 		$registeredurlparams->id = 'INT';
 
-		$safeuriaddon = new stdClass;
+		$safeuriaddon = new \stdClass;
 
 		foreach ($registeredurlparams as $key => $value)
 		{

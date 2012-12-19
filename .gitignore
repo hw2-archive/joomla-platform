@@ -1,0 +1,31 @@
+#
+# ignore file
+#
+
+!.gitignore
+
+#
+# OS specific
+#
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+
+
+#
+# Editors / debuggers / other output files
+#
+*~
+*.bak
+*.orig
+*.patch
+callgrind.out.*
+
+#
+# Git stuff
+#
+# stgit directories
+patches-*

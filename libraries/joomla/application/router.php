@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Application
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Set the available masks for the routing mode
@@ -125,7 +125,7 @@ class JRouter
 			// Create a JRouter object
 			$classname = 'JRouter' . ucfirst($client);
 
-			if (!class_exists($classname))
+			if (!my_class_exists($classname))
 			{
 				JLog::add('Non-autoloadable JRouter subclasses are deprecated.', JLog::WARNING, 'deprecated');
 
@@ -143,7 +143,7 @@ class JRouter
 				}
 			}
 
-			if (class_exists($classname))
+			if (my_class_exists($classname))
 			{
 				self::$instances[$client] = new $classname($options);
 			}

@@ -48,7 +48,7 @@ PHP version, whether the iconv extension is loaded (in PHP5 it's
 there by default), whether the mbstring extension is loaded. The
 following PHP script can be used to determine this information;
 
-<?php
+<?php namespace Hwj;
 print "PHP Version: " .phpversion()."<br>";
 if ( extension_loaded('mbstring') ) {
     print "mbstring available<br>";

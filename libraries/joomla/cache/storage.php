@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Cache
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Abstract cache storage handler
@@ -101,7 +101,7 @@ class JCacheStorage
 	 * @return  JCacheStorage  A JCacheStorage instance
 	 *
 	 * @since   11.1
-	 * @throws  UnexpectedValueException
+	 * @throws  \UnexpectedValueException
 	 * @throws  RuntimeException
 	 */
 	public static function getInstance($handler = null, $options = array())
@@ -117,7 +117,7 @@ class JCacheStorage
 
 			if (empty($handler))
 			{
-				throw new UnexpectedValueException('Cache Storage Handler not set.');
+				throw new \UnexpectedValueException('Cache Storage Handler not set.');
 			}
 		}
 
@@ -133,7 +133,7 @@ class JCacheStorage
 
 		$class = 'JCacheStorage' . ucfirst($handler);
 
-		if (!class_exists($class))
+		if (!my_class_exists($class))
 		{
 			// Search for the class file in the JCacheStorage include paths.
 			jimport('joomla.filesystem.path');
@@ -177,7 +177,7 @@ class JCacheStorage
 	 */
 	public function getAll()
 	{
-		if (!class_exists('JCacheStorageHelper', false))
+		if (!my_class_exists('JCacheStorageHelper', false))
 		{
 			include_once JPATH_PLATFORM . '/joomla/cache/storage/helper.php';
 		}

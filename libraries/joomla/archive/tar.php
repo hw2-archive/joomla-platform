@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Archive
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 jimport('joomla.filesystem.folder');
 
@@ -80,7 +80,7 @@ class JArchiveTar implements JArchiveExtractable
 
 		if (!$this->_data)
 		{
-			if (class_exists('JError'))
+			if (my_class_exists('JError'))
 			{
 				return JError::raiseWarning(100, 'Unable to read archive');
 			}
@@ -104,7 +104,7 @@ class JArchiveTar implements JArchiveExtractable
 				// Make sure the destination folder exists
 				if (!JFolder::create(dirname($path)))
 				{
-					if (class_exists('JError'))
+					if (my_class_exists('JError'))
 					{
 						return JError::raiseWarning(100, 'Unable to create destination');
 					}
@@ -115,7 +115,7 @@ class JArchiveTar implements JArchiveExtractable
 				}
 				if (JFile::write($path, $buffer) === false)
 				{
-					if (class_exists('JError'))
+					if (my_class_exists('JError'))
 					{
 						return JError::raiseWarning(100, 'Unable to write entry');
 					}
@@ -173,7 +173,7 @@ class JArchiveTar implements JArchiveExtractable
 
 			if (!$info)
 			{
-				if (class_exists('JError'))
+				if (my_class_exists('JError'))
 				{
 					return JError::raiseWarning(100, 'Unable to decompress data');
 				}

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package    Joomla.Platform
  *
@@ -6,7 +6,7 @@
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Static class to handle loading of libraries.
@@ -70,14 +70,14 @@ abstract class JLoader
 		{
 			if ($recurse)
 			{
-				$iterator = new RecursiveIteratorIterator(
-					new RecursiveDirectoryIterator($parentPath),
-					RecursiveIteratorIterator::SELF_FIRST
+				$iterator = new \RecursiveIteratorIterator(
+					new \RecursiveDirectoryIterator($parentPath),
+					\RecursiveIteratorIterator::SELF_FIRST
 				);
 			}
 			else
 			{
-				$iterator = new DirectoryIterator($parentPath);
+				$iterator = new \DirectoryIterator($parentPath);
 			}
 
 			foreach ($iterator as $file)
@@ -99,7 +99,7 @@ abstract class JLoader
 				}
 			}
 		}
-		catch (UnexpectedValueException $e)
+		catch (\UnexpectedValueException $e)
 		{
 			// Exception will be thrown if the path is not a directory. Ignore it.
 		}
@@ -166,7 +166,7 @@ abstract class JLoader
 			if (strpos($path, 'joomla') === 0)
 			{
 				// Since we are in the Joomla namespace prepend the classname with J.
-				$class = 'J' . $class;
+				$class = 'Hwj\J' . $class;
 
 				// Only register the class for autoloading if the file exists.
 				if (is_file($base . '/' . $path . '.php'))
@@ -210,8 +210,8 @@ abstract class JLoader
 		$class = strtolower($class);
 
 		// If the class already exists do nothing.
-		if (class_exists($class, false))
-		{
+		if (my_class_exists($class,false))
+		{   
 			return true;
 		}
 
@@ -505,16 +505,16 @@ abstract class JLoader
 		if ($enableClasses)
 		{
 			// Register the class map based autoloader.
-			spl_autoload_register(array('JLoader', 'load'));
+			spl_autoload_register(array('Hwj\JLoader', 'load'));
 		}
 
 		if ($enablePrefixes)
 		{
 			// Register the J prefix and base path for Joomla platform libraries.
-			self::registerPrefix('J', JPATH_PLATFORM . '/joomla');
+			self::registerPrefix('Hwj\J', JPATH_PLATFORM . '/joomla');
 
 			// Register the prefix autoloader.
-			spl_autoload_register(array('JLoader', '_autoload'));
+			spl_autoload_register(array('Hwj\JLoader', '_autoload'));
 		}
 
 		if ($enableNamespaces)
@@ -523,22 +523,22 @@ abstract class JLoader
 			{
 				// Register the lower case namespace loader.
 				case self::LOWER_CASE:
-					spl_autoload_register(array('JLoader', 'loadByNamespaceLowerCase'));
+					spl_autoload_register(array('Hwj\JLoader', 'loadByNamespaceLowerCase'));
 					break;
 
 				// Register the natural case namespace loader.
 				case self::NATURAL_CASE:
-					spl_autoload_register(array('JLoader', 'loadByNamespaceNaturalCase'));
+					spl_autoload_register(array('Hwj\JLoader', 'loadByNamespaceNaturalCase'));
 					break;
 
 				// Register the mixed case namespace loader.
 				case self::MIXED_CASE:
-					spl_autoload_register(array('JLoader', 'loadByNamespaceMixedCase'));
+					spl_autoload_register(array('Hwj\JLoader', 'loadByNamespaceMixedCase'));
 					break;
 
 				// Default to the lower case namespace loader.
 				default:
-					spl_autoload_register(array('JLoader', 'loadByNamespaceLowerCase'));
+					spl_autoload_register(array('Hwj\JLoader', 'loadByNamespaceLowerCase'));
 					break;
 			}
 		}
@@ -555,6 +555,7 @@ abstract class JLoader
 	 */
 	private static function _autoload($class)
 	{
+            if (strpos(strtolower($class), "hwj\j") === 0) //[Hw2]
 		foreach (self::$prefixes as $prefix => $lookup)
 		{
 			$chr = strlen($prefix) < strlen($class) ? $class[strlen($prefix)] : 0;

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
 * @version $Id$
 * @package utf8

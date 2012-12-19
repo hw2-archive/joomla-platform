@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Database
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * PostgreSQL database driver
@@ -280,7 +280,7 @@ class JDatabaseDriverPostgresql extends JDatabaseDriver
 		if ($new)
 		{
 			// Make sure we have a query class for this driver.
-			if (!class_exists('JDatabaseQueryPostgresql'))
+			if (!my_class_exists('JDatabaseQueryPostgresql'))
 			{
 				throw new RuntimeException('JDatabaseQueryPostgresql Class not found.');
 			}
@@ -975,7 +975,7 @@ class JDatabaseDriverPostgresql extends JDatabaseDriver
 	 *
 	 * @since   12.1
 	 */
-	protected function fetchObject($cursor = null, $class = 'stdClass')
+	protected function fetchObject($cursor = null, $class = '\stdClass')
 	{
 		return pg_fetch_object(is_null($cursor) ? $this->cursor : $cursor, null, $class);
 	}

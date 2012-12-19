@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Google
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Google Analytics embed class for the Joomla Platform.
@@ -262,7 +262,7 @@ class JGoogleEmbedAnalytics extends JGoogleEmbed
 
 		if (!$this->getOption('code'))
 		{
-			throw new UnexpectedValueException('A Google Analytics tracking code is required.');
+			throw new \UnexpectedValueException('A Google Analytics tracking code is required.');
 		}
 
 		$code = $this->getOption('code');
@@ -293,7 +293,7 @@ class JGoogleEmbedAnalytics extends JGoogleEmbed
 	{
 		if (!$this->getOption('code'))
 		{
-			throw new UnexpectedValueException('A Google Analytics tracking code is required.');
+			throw new \UnexpectedValueException('A Google Analytics tracking code is required.');
 		}
 
 		$prefix = $this->isSecure() ? 'https://ssl' : 'http://www';

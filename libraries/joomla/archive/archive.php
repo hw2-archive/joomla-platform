@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Archive
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 jimport('joomla.filesystem.file');
 jimport('joomla.filesystem.folder');
@@ -176,7 +176,7 @@ class JArchive
 	 * @return  JArchiveExtractable  Adapter for the requested type
 	 *
 	 * @since   11.1
-	 * @throws  UnexpectedValueException
+	 * @throws  \UnexpectedValueException
 	 */
 	public static function getAdapter($type)
 	{
@@ -185,9 +185,9 @@ class JArchive
 			// Try to load the adapter object
 			$class = 'JArchive' . ucfirst($type);
 
-			if (!class_exists($class))
+			if (!my_class_exists($class))
 			{
-				throw new UnexpectedValueException('Unable to load archive', 500);
+				throw new \UnexpectedValueException('Unable to load archive', 500);
 			}
 
 			self::$adapters[$type] = new $class;

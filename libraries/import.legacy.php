@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj; require_once __DIR__."/defines.php";
 /**
  * Bootstrap file for the Joomla Platform [with legacy libraries].  Including this file into your application
  * will make Joomla Platform libraries [including legacy libraries] available for use.
@@ -10,45 +10,45 @@
  */
 
 // Set the platform root path as a constant if necessary.
-if (!defined('JPATH_PLATFORM'))
+if (!my_defined('JPATH_PLATFORM'))
 {
-	define('JPATH_PLATFORM', __DIR__);
+	my_define('JPATH_PLATFORM', __DIR__);
 }
 
 // Detect the native operating system type.
 $os = strtoupper(substr(PHP_OS, 0, 3));
 
-if (!defined('IS_WIN'))
+if (!my_defined('IS_WIN'))
 {
-	define('IS_WIN', ($os === 'WIN') ? true : false);
+	my_define('IS_WIN', ($os === 'WIN') ? true : false);
 }
-if (!defined('IS_UNIX'))
+if (!my_defined('IS_UNIX'))
 {
-	define('IS_UNIX', (($os !== 'MAC') && ($os !== 'WIN')) ? true : false);
+	my_define('IS_UNIX', (($os !== 'MAC') && ($os !== 'WIN')) ? true : false);
 }
 
 /**
  * @deprecated 13.3	Use IS_UNIX instead
  */
-if (!defined('IS_MAC'))
+if (!my_defined('IS_MAC'))
 {
-	define('IS_MAC', (IS_UNIX === true && ($os === 'DAR' || $os === 'MAC')) ? true : false);
+	my_define('IS_MAC', (IS_UNIX === true && ($os === 'DAR' || $os === 'MAC')) ? true : false);
 }
 
 // Import the platform version library if necessary.
-if (!class_exists('JPlatform'))
+if (!class_exists('Hwj\JPlatform'))
 {
 	require_once JPATH_PLATFORM . '/platform.php';
 }
 
 // Import the library loader if necessary.
-if (!class_exists('JLoader'))
+if (!class_exists('Hwj\JLoader'))
 {
 	require_once JPATH_PLATFORM . '/loader.php';
 }
 
 // Make sure that the Joomla Platform has been successfully loaded.
-if (!class_exists('JLoader'))
+if (!class_exists('Hwj\JLoader'))
 {
 	throw new RuntimeException('Joomla Platform not loaded.');
 }

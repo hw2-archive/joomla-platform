@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Image
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Class to manipulate an image.
@@ -108,7 +108,7 @@ class JImage
 	 *
 	 * @param   string  $path  The filesystem path to the image for which to get properties.
 	 *
-	 * @return  stdClass
+	 * @return  \stdClass
 	 *
 	 * @since   11.3
 	 * @throws  InvalidArgumentException
@@ -787,7 +787,7 @@ class JImage
 		// Verify that the filter type exists.
 		$className = 'JImageFilter' . ucfirst($type);
 
-		if (!class_exists($className))
+		if (!my_class_exists($className))
 		{
 			JLog::add('The ' . ucfirst($type) . ' image filter is not available.', JLog::ERROR);
 			throw new RuntimeException('The ' . ucfirst($type) . ' image filter is not available.');
@@ -816,7 +816,7 @@ class JImage
 	 * @param   integer  $height       The height of the resized image in pixels.
 	 * @param   integer  $scaleMethod  The method to use for scaling
 	 *
-	 * @return  stdClass
+	 * @return  \stdClass
 	 *
 	 * @since   11.3
 	 * @throws  InvalidArgumentException  If width, height or both given as zero
@@ -824,7 +824,7 @@ class JImage
 	protected function prepareDimensions($width, $height, $scaleMethod)
 	{
 		// Instantiate variables.
-		$dimensions = new stdClass;
+		$dimensions = new \stdClass;
 
 		switch ($scaleMethod)
 		{

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  FileSystem
@@ -7,12 +7,12 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
-if (!defined('JPATH_ROOT'))
+if (!my_defined('JPATH_ROOT'))
 {
 	// Define a string constant for the root directory of the file system in native format
-	define('JPATH_ROOT', JPath::clean(JPATH_SITE));
+	my_define('JPATH_ROOT', JPath::clean(JPATH_SITE));
 }
 
 /**

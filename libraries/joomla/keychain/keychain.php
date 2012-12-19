@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Keychain
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Keychain Class
@@ -88,7 +88,7 @@ class JKeychain extends JRegistry
 			{
 			if (!isset($node->$nodes[$i]) && ($i != $n))
 			{
-			$node->$nodes[$i] = new stdClass;
+			$node->$nodes[$i] = new \stdClass;
 			}
 			$node = $node->$nodes[$i];
 			}

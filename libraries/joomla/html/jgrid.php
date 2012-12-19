@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  HTML
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Utility class for creating HTML Grids
@@ -158,7 +158,7 @@ abstract class JHtmlJGrid
 		// Special state for dates
 		if ($publish_up || $publish_down)
 		{
-			$nullDate = JFactory::getDBO()->getNullDate();
+			$nullDate = JFactory::getDBo()->getNullDate();
 			$nowDate = JFactory::getDate()->toUnix();
 
 			$tz = new DateTimeZone(JFactory::getUser()->getParam('timezone', JFactory::getConfig()->get('offset')));

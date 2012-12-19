@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Mail
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 $PHPMAILER_LANG["authenticate"] = JText::_('PHPMAILER_AUTHENTICATE');
 $PHPMAILER_LANG["connect_host"] = JText::_('PHPMAILER_CONNECT_HOST');

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Archive
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 jimport('joomla.filesystem.stream');
 
@@ -46,7 +46,7 @@ class JArchiveBzip2 implements JArchiveExtractable
 
 		if (!extension_loaded('bz2'))
 		{
-			if (class_exists('JError'))
+			if (my_class_exists('JError'))
 			{
 				return JError::raiseWarning(100, 'The bz2 extension is not available.');
 			}
@@ -63,7 +63,7 @@ class JArchiveBzip2 implements JArchiveExtractable
 
 			if (!$this->_data)
 			{
-				if (class_exists('JError'))
+				if (my_class_exists('JError'))
 				{
 					return JError::raiseWarning(100, 'Unable to read archive');
 				}
@@ -78,7 +78,7 @@ class JArchiveBzip2 implements JArchiveExtractable
 
 			if (empty($buffer))
 			{
-				if (class_exists('JError'))
+				if (my_class_exists('JError'))
 				{
 					return JError::raiseWarning(100, 'Unable to decompress data');
 				}
@@ -90,7 +90,7 @@ class JArchiveBzip2 implements JArchiveExtractable
 
 			if (JFile::write($destination, $buffer) === false)
 			{
-				if (class_exists('JError'))
+				if (my_class_exists('JError'))
 				{
 					return JError::raiseWarning(100, 'Unable to write archive');
 				}
@@ -111,7 +111,7 @@ class JArchiveBzip2 implements JArchiveExtractable
 
 			if (!$input->open($archive))
 			{
-				if (class_exists('JError'))
+				if (my_class_exists('JError'))
 				{
 					return JError::raiseWarning(100, 'Unable to read archive (bz2)');
 				}
@@ -127,7 +127,7 @@ class JArchiveBzip2 implements JArchiveExtractable
 			{
 				$input->close();
 
-				if (class_exists('JError'))
+				if (my_class_exists('JError'))
 				{
 					return JError::raiseWarning(100, 'Unable to write archive (bz2)');
 				}
@@ -147,7 +147,7 @@ class JArchiveBzip2 implements JArchiveExtractable
 					{
 						$input->close();
 
-						if (class_exists('JError'))
+						if (my_class_exists('JError'))
 						{
 							return JError::raiseWarning(100, 'Unable to write archive (bz2)');
 						}

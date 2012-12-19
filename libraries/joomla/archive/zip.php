@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Archive
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 jimport('joomla.filesystem.folder');
 
@@ -127,7 +127,7 @@ class JArchiveZip implements JArchiveExtractable
 	{
 		if (!is_file($archive))
 		{
-			if (class_exists('JError'))
+			if (my_class_exists('JError'))
 			{
 				return JError::raiseWarning(100, 'Archive does not exist');
 			}
@@ -210,7 +210,7 @@ class JArchiveZip implements JArchiveExtractable
 
 		if (!extension_loaded('zlib'))
 		{
-			if (class_exists('JError'))
+			if (my_class_exists('JError'))
 			{
 				return JError::raiseWarning(100, 'Zlib not supported');
 			}
@@ -224,7 +224,7 @@ class JArchiveZip implements JArchiveExtractable
 
 		if (!$this->_data)
 		{
-			if (class_exists('JError'))
+			if (my_class_exists('JError'))
 			{
 				return JError::raiseWarning(100, 'Unable to read archive (zip)');
 			}
@@ -236,7 +236,7 @@ class JArchiveZip implements JArchiveExtractable
 
 		if (!$this->_readZipInfo($this->_data))
 		{
-			if (class_exists('JError'))
+			if (my_class_exists('JError'))
 			{
 				return JError::raiseWarning(100, 'Get ZIP Information failed');
 			}
@@ -258,7 +258,7 @@ class JArchiveZip implements JArchiveExtractable
 				// Make sure the destination folder exists
 				if (!JFolder::create(dirname($path)))
 				{
-					if (class_exists('JError'))
+					if (my_class_exists('JError'))
 					{
 						return JError::raiseWarning(100, 'Unable to create destination');
 					}
@@ -270,7 +270,7 @@ class JArchiveZip implements JArchiveExtractable
 
 				if (JFile::write($path, $buffer) === false)
 				{
-					if (class_exists('JError'))
+					if (my_class_exists('JError'))
 					{
 						return JError::raiseWarning(100, 'Unable to write entry');
 					}
@@ -305,7 +305,7 @@ class JArchiveZip implements JArchiveExtractable
 			// Make sure the destination folder exists
 			if (!JFolder::create($destination))
 			{
-				if (class_exists('JError'))
+				if (my_class_exists('JError'))
 				{
 					return JError::raiseWarning(100, 'Unable to create destination');
 				}
@@ -326,7 +326,7 @@ class JArchiveZip implements JArchiveExtractable
 
 						if (JFile::write($destination . '/' . zip_entry_name($file), $buffer) === false)
 						{
-							if (class_exists('JError'))
+							if (my_class_exists('JError'))
 							{
 								return JError::raiseWarning(100, 'Unable to write entry');
 							}
@@ -341,7 +341,7 @@ class JArchiveZip implements JArchiveExtractable
 				}
 				else
 				{
-					if (class_exists('JError'))
+					if (my_class_exists('JError'))
 					{
 						return JError::raiseWarning(100, 'Unable to read entry');
 					}
@@ -356,7 +356,7 @@ class JArchiveZip implements JArchiveExtractable
 		}
 		else
 		{
-			if (class_exists('JError'))
+			if (my_class_exists('JError'))
 			{
 				return JError::raiseWarning(100, 'Unable to open archive');
 			}
@@ -425,7 +425,7 @@ class JArchiveZip implements JArchiveExtractable
 		{
 			if ($dataLength < $fhStart + 31)
 			{
-				if (class_exists('JError'))
+				if (my_class_exists('JError'))
 				{
 					return JError::raiseWarning(100, 'Invalid Zip Data');
 				}
@@ -462,7 +462,7 @@ class JArchiveZip implements JArchiveExtractable
 
 			if ($dataLength < $fhStart + 43)
 			{
-				if (class_exists('JError'))
+				if (my_class_exists('JError'))
 				{
 					return JError::raiseWarning(100, 'Invalid ZIP data');
 				}
@@ -484,7 +484,7 @@ class JArchiveZip implements JArchiveExtractable
 
 			if ($dataLength < $lfhStart + 34)
 			{
-				if (class_exists('JError'))
+				if (my_class_exists('JError'))
 				{
 					return JError::raiseWarning(100, 'Invalid Zip Data');
 				}

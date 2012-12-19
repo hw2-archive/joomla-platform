@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Legacy
  * @subpackage  HTML
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Utility class working with content language select lists
@@ -44,7 +44,7 @@ abstract class JHtmlContentLanguage
 		if (empty(self::$items))
 		{
 			// Get the database object and a new query object.
-			$db		= JFactory::getDBO();
+			$db		= JFactory::getDbo();
 			$query	= $db->getQuery(true);
 
 			// Build the query.

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Database
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Joomla Platform Database Driver Class
@@ -75,9 +75,9 @@ abstract class JDatabaseIterator implements Countable, Iterator
 	 *
 	 * @throws  InvalidArgumentException
 	 */
-	public function __construct($cursor, $column = null, $class = 'stdClass')
+	public function __construct($cursor, $column = null, $class = '\stdClass')
 	{
-		if (!class_exists($class))
+		if (!my_class_exists($class))
 		{
 			throw new InvalidArgumentException(sprintf('new %s(*%s*, cursor)', get_class($this), gettype($class)));
 		}

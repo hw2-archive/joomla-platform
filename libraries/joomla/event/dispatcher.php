@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Event
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Class to handle dispatching of events.
@@ -105,7 +105,7 @@ class JEventDispatcher extends JObject
 			$method = array('event' => $event, 'handler' => $handler);
 			$this->attach($method);
 		}
-		elseif (class_exists($handler))
+		elseif (my_class_exists($handler))
 		{
 			// Ok, class type event handler... let's instantiate and attach it.
 			$this->attach(new $handler($this));

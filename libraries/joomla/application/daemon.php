@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Application
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 jimport('joomla.filesystem.folder');
 
@@ -111,7 +111,7 @@ class JApplicationDaemon extends JApplicationCli
 	{
 		// Verify that the process control extension for PHP is available.
 		// @codeCoverageIgnoreStart
-		if (!defined('SIGHUP'))
+		if (!my_defined('SIGHUP'))
 		{
 			JLog::add('The PCNTL extension for PHP is not available.', JLog::ERROR);
 			throw new RuntimeException('The PCNTL extension for PHP is not available.');
@@ -695,11 +695,11 @@ class JApplicationDaemon extends JApplicationCli
 		foreach (self::$signals as $signal)
 		{
 			// Ignore signals that are not defined.
-			if (!defined($signal) || !is_int(constant($signal)) || (constant($signal) === 0))
+			if (!my_defined($signal) || !is_int(constant($signal)) || (constant($signal) === 0))
 			{
 				// Define the signal to avoid notices.
 				JLog::add('Signal "' . $signal . '" not defined. Defining it as null.', JLog::DEBUG);
-				define($signal, null);
+				my_define($signal, null);
 
 				// Don't listen for signal.
 				continue;

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * JGrid class to dynamically generate HTML tables
  *
@@ -9,7 +9,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * JGrid class to dynamically generate HTML tables
@@ -285,7 +285,7 @@ class JGrid
 	{
 		if ($replace || !isset($this->rows[$this->activeRow][$name]))
 		{
-			$cell = new stdClass;
+			$cell = new \stdClass;
 			$cell->options = $option;
 			$cell->content = $content;
 			$this->rows[$this->activeRow][$name] = $cell;

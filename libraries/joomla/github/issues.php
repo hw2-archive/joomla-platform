@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  GitHub
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * GitHub API Issues class for the Joomla Platform.
@@ -225,7 +225,7 @@ class JGithubIssues extends JGithubObject
 		$path = '/repos/' . $user . '/' . $repo . '/issues/' . (int) $issueId;
 
 		// Craete the data object.
-		$data = new stdClass;
+		$data = new \stdClass;
 
 		// If a title is set add it to the data object.
 		if (isset($title))

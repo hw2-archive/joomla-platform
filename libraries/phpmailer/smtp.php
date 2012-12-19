@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /*~ class.smtp.php
 .---------------------------------------------------------------------------.
 |  Software: PHPMailer - PHP email class                                    |

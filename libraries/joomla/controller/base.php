@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Controller
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Joomla Platform Base Controller Class
@@ -93,7 +93,7 @@ abstract class JControllerBase implements JController
 	 * @return  JController  Supports chaining.
 	 *
 	 * @since   12.1
-	 * @throws  UnexpectedValueException if input is not the right class.
+	 * @throws  \UnexpectedValueException if input is not the right class.
 	 */
 	public function unserialize($input)
 	{
@@ -105,7 +105,7 @@ abstract class JControllerBase implements JController
 
 		if (!($this->input instanceof JInput))
 		{
-			throw new UnexpectedValueException(sprintf('%s::unserialize would not accept a `%s`.', get_class($this), gettype($this->input)));
+			throw new \UnexpectedValueException(sprintf('%s::unserialize would not accept a `%s`.', get_class($this), gettype($this->input)));
 		}
 
 		return $this;

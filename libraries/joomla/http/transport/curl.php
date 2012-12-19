@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  HTTP
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * HTTP transport class for using cURL.
@@ -180,7 +180,7 @@ class JHttpTransportCurl implements JHttpTransport
 	 * @return  JHttpResponse
 	 *
 	 * @since   11.3
-	 * @throws  UnexpectedValueException
+	 * @throws  \UnexpectedValueException
 	 */
 	protected function getResponse($content, $info)
 	{
@@ -216,7 +216,7 @@ class JHttpTransportCurl implements JHttpTransport
 		// No valid response code was detected.
 		else
 		{
-			throw new UnexpectedValueException('No HTTP response code found.');
+			throw new \UnexpectedValueException('No HTTP response code found.');
 		}
 
 		// Add the response headers to the response object.

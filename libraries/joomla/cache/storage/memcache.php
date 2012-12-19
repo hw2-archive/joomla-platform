@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Cache
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Memcache cache storage handler
@@ -64,7 +64,7 @@ class JCacheStorageMemcache extends JCacheStorage
 	 */
 	protected function getConnection()
 	{
-		if ((extension_loaded('memcache') && class_exists('Memcache')) != true)
+		if ((extension_loaded('memcache') && my_class_exists('Memcache')) != true)
 		{
 			return false;
 		}
@@ -199,7 +199,7 @@ class JCacheStorageMemcache extends JCacheStorage
 			$index = array();
 		}
 
-		$tmparr = new stdClass;
+		$tmparr = new \stdClass;
 		$tmparr->name = $cache_id;
 		$tmparr->size = strlen($data);
 		$index[] = $tmparr;
@@ -307,7 +307,7 @@ class JCacheStorageMemcache extends JCacheStorage
 	 */
 	public static function isSupported()
 	{
-		if ((extension_loaded('memcache') && class_exists('Memcache')) != true)
+		if ((extension_loaded('memcache') && my_class_exists('Memcache')) != true)
 		{
 			return false;
 		}
@@ -342,7 +342,7 @@ class JCacheStorageMemcache extends JCacheStorage
 	 */
 	public function lock($id, $group, $locktime)
 	{
-		$returning = new stdClass;
+		$returning = new \stdClass;
 		$returning->locklooped = false;
 
 		$looptime = $locktime * 10;
@@ -361,7 +361,7 @@ class JCacheStorageMemcache extends JCacheStorage
 			$index = array();
 		}
 
-		$tmparr = new stdClass;
+		$tmparr = new \stdClass;
 		$tmparr->name = $cache_id;
 		$tmparr->size = 1;
 		$index[] = $tmparr;

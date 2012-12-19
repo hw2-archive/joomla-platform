@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Language
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Language helper class
@@ -39,7 +39,7 @@ class JLanguageHelper
 
 		if ($installed)
 		{
-			$db = JFactory::getDBO();
+			$db = JFactory::getDbo();
 			$query = $db->getQuery(true);
 			$query->select('element');
 			$query->from('#__extensions');
@@ -143,7 +143,7 @@ class JLanguageHelper
 				foreach ($knownLangs as $metadata)
 				{
 					// Take off 3 letters iso code languages as they can't match browsers' languages and default them to en
-					$obj = new stdClass;
+					$obj = new \stdClass;
 					$obj->lang_code = $metadata['tag'];
 					$languages[$key][] = $obj;
 				}
@@ -154,7 +154,7 @@ class JLanguageHelper
 
 				if (!$languages = $cache->get('languages'))
 				{
-					$db = JFactory::getDBO();
+					$db = JFactory::getDbo();
 					$query = $db->getQuery(true);
 					$query->select('*')
 						->from('#__languages')

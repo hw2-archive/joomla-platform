@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Installer
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 jimport('joomla.installer.filemanifest');
 jimport('joomla.base.adapterinstance');
@@ -128,7 +128,7 @@ class JInstallerFile extends JAdapterInstance
 			// Set the class name
 			$classname = $element . 'InstallerScript';
 
-			if (class_exists($classname))
+			if (my_class_exists($classname))
 			{
 				// Create a new instance
 				$this->parent->manifestClass = new $classname($this);
@@ -503,7 +503,7 @@ class JInstallerFile extends JAdapterInstance
 				// Set the class name
 				$classname = $row->element . 'InstallerScript';
 
-				if (class_exists($classname))
+				if (my_class_exists($classname))
 				{
 					// Create a new instance
 					$this->parent->manifestClass = new $classname($this);

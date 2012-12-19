@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Registry
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * XML format handler for JRegistry.
@@ -56,7 +56,7 @@ class JRegistryFormatXML extends JRegistryFormat
 	 */
 	public function stringToObject($data, array $options = array())
 	{
-		$obj = new stdClass;
+		$obj = new \stdClass;
 
 		// Parse the XML string.
 		$xml = simplexml_load_string($data);
@@ -109,7 +109,7 @@ class JRegistryFormatXML extends JRegistryFormat
 				}
 				break;
 			default:
-				$value = new stdClass;
+				$value = new \stdClass;
 
 				foreach ($node->children() as $child)
 				{

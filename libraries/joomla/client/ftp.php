@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Client
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /** Error Codes:
  * - 30 : Unable to connect to host
@@ -21,26 +21,26 @@ defined('JPATH_PLATFORM') or die;
  * - 38 : Local filesystem error
  */
 
-if (!defined('CRLF'))
+if (!my_defined('CRLF'))
 {
-	define('CRLF', "\r\n");
+	my_define('CRLF', "\r\n");
 }
-if (!defined("FTP_AUTOASCII"))
+if (!my_defined("FTP_AUTOASCII"))
 {
-	define("FTP_AUTOASCII", -1);
+	my_define("FTP_AUTOASCII", -1);
 }
-if (!defined("FTP_BINARY"))
+if (!my_defined("FTP_BINARY"))
 {
-	define("FTP_BINARY", 1);
+	my_define("FTP_BINARY", 1);
 }
-if (!defined("FTP_ASCII"))
+if (!my_defined("FTP_ASCII"))
 {
-	define("FTP_ASCII", 0);
+	my_define("FTP_ASCII", 0);
 }
 
-if (!defined('FTP_NATIVE'))
+if (!my_defined('FTP_NATIVE'))
 {
-	define('FTP_NATIVE', (function_exists('ftp_connect')) ? 1 : 0);
+	my_define('FTP_NATIVE', (function_exists('ftp_connect')) ? 1 : 0);
 }
 
 /**

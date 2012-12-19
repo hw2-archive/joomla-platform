@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Application
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Base class for a Joomla! Web application.
@@ -136,7 +136,7 @@ class JApplicationWeb extends JApplicationBase
 		$this->set('execution.timestamp', time());
 
 		// Setup the response object.
-		$this->response = new stdClass;
+		$this->response = new \stdClass;
 		$this->response->cachable = false;
 		$this->response->headers = array();
 		$this->response->body = array();
@@ -161,7 +161,7 @@ class JApplicationWeb extends JApplicationBase
 		// Only create the object if it doesn't exist.
 		if (empty(self::$instance))
 		{
-			if (class_exists($name) && (is_subclass_of($name, 'JApplicationWeb')))
+			if (my_class_exists($name) && (is_subclass_of($name, 'JApplicationWeb')))
 			{
 				self::$instance = new $name;
 			}
@@ -318,7 +318,7 @@ class JApplicationWeb extends JApplicationBase
 		// Fall back to constants.
 		else
 		{
-			$options['directory'] = defined('JPATH_THEMES') ? JPATH_THEMES : (defined('JPATH_BASE') ? JPATH_BASE : __DIR__) . '/themes';
+			$options['directory'] = my_defined('JPATH_THEMES') ? JPATH_THEMES : (my_defined('JPATH_BASE') ? JPATH_BASE : __DIR__) . '/themes';
 		}
 
 		// Parse the document.
@@ -898,7 +898,7 @@ class JApplicationWeb extends JApplicationBase
 		// Instantiate variables.
 		$config = array();
 
-		if (empty($file) && defined('JPATH_BASE'))
+		if (empty($file) && my_defined('JPATH_BASE'))
 		{
 			$file = JPATH_BASE . '/configuration.php';
 
@@ -914,7 +914,7 @@ class JApplicationWeb extends JApplicationBase
 		{
 			JLoader::register($class, $file);
 
-			if (class_exists($class))
+			if (my_class_exists($class))
 			{
 				$config = new $class;
 			}

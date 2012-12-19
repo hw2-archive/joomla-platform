@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Legacy
  * @subpackage  Menu
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * JMenu class
@@ -92,7 +92,7 @@ class JMenu
 			// Create a JMenu object
 			$classname = 'JMenu' . ucfirst($client);
 
-			if (!class_exists($classname))
+			if (!my_class_exists($classname))
 			{
 				// @deprecated 13.3 Everything in this block is deprecated but the warning is only logged after the file_exists
 				// Load the menu object
@@ -110,7 +110,7 @@ class JMenu
 				}
 			}
 
-			if (class_exists($classname))
+			if (my_class_exists($classname))
 			{
 				self::$instances[$client] = new $classname($options);
 			}

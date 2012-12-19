@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Application
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Base class for a Joomla! command line application.
@@ -51,7 +51,7 @@ class JApplicationCli extends JApplicationBase
 	{
 		// Close the application if we are not executed from the command line.
 		// @codeCoverageIgnoreStart
-		if (!defined('STDOUT') || !defined('STDIN') || !isset($_SERVER['argv']))
+		if (!my_defined('STDOUT') || !my_defined('STDIN') || !isset($_SERVER['argv']))
 		{
 			$this->close();
 		}
@@ -65,7 +65,7 @@ class JApplicationCli extends JApplicationBase
 		// Create the input based on the application logic.
 		else
 		{
-			if (class_exists('JInput'))
+			if (my_class_exists('JInput'))
 			{
 				$this->input = new JInputCLI;
 			}
@@ -126,7 +126,7 @@ class JApplicationCli extends JApplicationBase
 		// Only create the object if it doesn't exist.
 		if (empty(self::$instance))
 		{
-			if (class_exists($name) && (is_subclass_of($name, 'JApplicationCli')))
+			if (my_class_exists($name) && (is_subclass_of($name, 'JApplicationCli')))
 			{
 				self::$instance = new $name;
 			}
@@ -249,7 +249,7 @@ class JApplicationCli extends JApplicationBase
 		// Instantiate variables.
 		$config = array();
 
-		if (empty($file) && defined('JPATH_BASE'))
+		if (empty($file) && my_defined('JPATH_BASE'))
 		{
 			$file = JPATH_BASE . '/configuration.php';
 
@@ -265,7 +265,7 @@ class JApplicationCli extends JApplicationBase
 		{
 			JLoader::register($class, $file);
 
-			if (class_exists($class))
+			if (my_class_exists($class))
 			{
 				$config = new $class;
 			}

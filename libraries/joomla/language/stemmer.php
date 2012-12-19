@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Language
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Stemmer base class.
@@ -54,7 +54,7 @@ abstract class JLanguageStemmer
 		$class = 'JLanguageStemmer' . ucfirst(trim($adapter));
 
 		// Check if a stemmer exists for the adapter.
-		if (!class_exists($class))
+		if (!my_class_exists($class))
 		{
 			// Throw invalid adapter exception.
 			throw new RuntimeException(JText::sprintf('JLIB_STEMMER_INVALID_STEMMER', $adapter));

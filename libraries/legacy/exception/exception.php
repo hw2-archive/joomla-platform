@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Legacy
  * @subpackage  Exception
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Joomla! Exception object.
@@ -17,7 +17,7 @@ defined('JPATH_PLATFORM') or die;
  * @since       11.1
  * @deprecated  13.1
  */
-class JException extends Exception
+class JException extends \Exception
 {
 	/**
 	 * @var    string  Error level.

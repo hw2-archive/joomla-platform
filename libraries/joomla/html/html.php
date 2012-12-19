@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  HTML
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 jimport('joomla.environment.browser');
 jimport('joomla.filesystem.file');
@@ -107,7 +107,7 @@ abstract class JHtml
 
 		$className = $prefix . ucfirst($file);
 
-		if (!class_exists($className))
+		if (!my_class_exists($className))
 		{
 			$path = JPath::find(self::$includePaths, strtolower($file) . '.php');
 
@@ -115,7 +115,7 @@ abstract class JHtml
 			{
 				require_once $path;
 
-				if (!class_exists($className))
+				if (!my_class_exists($className))
 				{
 					throw new InvalidArgumentException(sprintf('%s not found.', $className), 500);
 				}

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Registry
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 jimport('joomla.utilities.arrayhelper');
 
@@ -18,7 +18,7 @@ jimport('joomla.utilities.arrayhelper');
  * @subpackage  Registry
  * @since       11.1
  */
-class JRegistry implements JsonSerializable
+class JRegistry implements \JsonSerializable
 {
 	/**
 	 * Registry Object
@@ -44,7 +44,7 @@ class JRegistry implements JsonSerializable
 	public function __construct($data = null)
 	{
 		// Instantiate the internal data object.
-		$this->data = new stdClass;
+		$this->data = new \stdClass;
 
 		// Optionally load supplied data.
 		if (is_array($data) || is_object($data))
@@ -346,7 +346,7 @@ class JRegistry implements JsonSerializable
 			{
 				if (!isset($node->$nodes[$i]) && ($i != $n))
 				{
-					$node->$nodes[$i] = new stdClass;
+					$node->$nodes[$i] = new \stdClass;
 				}
 				$node = $node->$nodes[$i];
 			}
@@ -426,7 +426,7 @@ class JRegistry implements JsonSerializable
 		{
 			if ((is_array($v) && JArrayHelper::isAssociative($v)) || is_object($v))
 			{
-				$parent->$k = new stdClass;
+				$parent->$k = new \stdClass;
 				$this->bindData($parent->$k, $v);
 			}
 			else

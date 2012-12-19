@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Log
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Joomla! Log Class
@@ -250,7 +250,7 @@ class JLog
 
 				$class = 'JLogLogger' . ucfirst($this->configurations[$signature]['logger']);
 
-				if (class_exists($class))
+				if (my_class_exists($class))
 				{
 					$this->loggers[$signature] = new $class($this->configurations[$signature]);
 				}

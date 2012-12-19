@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
 * @version $Id$
 * @package utf8
@@ -8,8 +8,8 @@
 /**
 * Define UTF8_CORE as required
 */
-if ( !defined('UTF8_CORE') ) {
-    define('UTF8_CORE',TRUE);
+if ( !my_defined('UTF8_CORE') ) {
+    my_define('UTF8_CORE',TRUE);
 }
 
 //--------------------------------------------------------------------

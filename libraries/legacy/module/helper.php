@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Legacy
  * @subpackage  Module
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Module helper class
@@ -53,7 +53,7 @@ abstract class JModuleHelper
 		// If we didn't find it, and the name is mod_something, create a dummy object
 		if (is_null($result) && substr($name, 0, 4) == 'mod_')
 		{
-			$result            = new stdClass;
+			$result            = new \stdClass;
 			$result->id        = 0;
 			$result->title     = '';
 			$result->module    = $name;
@@ -458,7 +458,7 @@ abstract class JModuleHelper
 				if (is_array($cacheparams->modeparams))
 				{
 					$uri = JRequest::get();
-					$safeuri = new stdClass;
+					$safeuri = new \stdClass;
 
 					foreach ($cacheparams->modeparams as $key => $value)
 					{

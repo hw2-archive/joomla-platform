@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  HTML
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Utility class for creating HTML select lists
@@ -345,13 +345,13 @@ abstract class JHtmlSelect
 		switch ($state)
 		{
 			case 'open':
-				$obj = new stdClass;
+				$obj = new \stdClass;
 				$obj->$optKey = '<OPTGROUP>';
 				$obj->$optText = $text;
 				$state = 'close';
 				break;
 			case 'close':
-				$obj = new stdClass;
+				$obj = new \stdClass;
 				$obj->$optKey = '</OPTGROUP>';
 				$obj->$optText = $text;
 				$state = 'open';
@@ -409,7 +409,7 @@ abstract class JHtmlSelect
 			$options['option.text'] = $optText;
 			$options['disable'] = $disable;
 		}
-		$obj = new stdClass;
+		$obj = new \stdClass;
 		$obj->$options['option.key'] = $value;
 		$obj->$options['option.text'] = trim($text) ? $text : $value;
 

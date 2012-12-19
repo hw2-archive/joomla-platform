@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  GitHub
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * GitHub API Gists class for the Joomla Platform.
@@ -163,7 +163,7 @@ class JGithubGists extends JGithubObject
 		$path = '/gists/' . (int) $gistId;
 
 		// Craete the data object.
-		$data = new stdClass;
+		$data = new \stdClass;
 
 		// If a description is set add it to the data object.
 		if (isset($description))

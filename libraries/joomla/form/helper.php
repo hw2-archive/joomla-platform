@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Form
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 jimport('joomla.filesystem.path');
 
@@ -111,7 +111,7 @@ class JFormHelper
 			return $types[$key];
 		}
 
-		$class = self::loadClass($entity, $type);
+		$class = self::loadClass($entity, $type); // [HW2] namespace fix
 
 		if ($class !== false)
 		{
@@ -181,7 +181,7 @@ class JFormHelper
 
 		$class = JString::ucfirst($prefix, '_') . 'Form' . JString::ucfirst($entity, '_') . JString::ucfirst($type, '_');
 
-		if (class_exists($class))
+		if (my_class_exists($class))
 		{
 			return $class;
 		}
@@ -218,7 +218,7 @@ class JFormHelper
 			{
 				require_once $file;
 
-				if (class_exists($class))
+				if (my_class_exists($class))
 				{
 					break;
 				}
@@ -226,7 +226,7 @@ class JFormHelper
 		}
 
 		// Check for all if the class exists.
-		return class_exists($class) ? $class : false;
+		return my_class_exists($class) ? $class : false;
 	}
 
 	/**

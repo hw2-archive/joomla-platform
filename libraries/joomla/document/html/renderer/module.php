@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Document
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * JDocument Module renderer
@@ -50,7 +50,7 @@ class JDocumentRendererModule extends JDocumentRenderer
 					 * we want to render it
 					 */
 					$tmp = $module;
-					$module = new stdClass;
+					$module = new \stdClass;
 					$module->params = null;
 					$module->module = $tmp;
 					$module->id = 0;
@@ -93,7 +93,7 @@ class JDocumentRendererModule extends JDocumentRenderer
 		{
 
 			// Default to itemid creating method and workarounds on
-			$cacheparams = new stdClass;
+			$cacheparams = new \stdClass;
 			$cacheparams->cachemode = $cachemode;
 			$cacheparams->class = 'JModuleHelper';
 			$cacheparams->method = 'renderModule';

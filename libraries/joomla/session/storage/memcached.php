@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Session
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Memcached session storage handler for PHP
@@ -69,6 +69,6 @@ class JSessionStorageMemcached extends JSessionStorage
 	 */
 	static public function isSupported()
 	{
-		return (extension_loaded('memcached') && class_exists('Memcached'));
+		return (extension_loaded('memcached') && my_class_exists('Memcached'));
 	}
 }

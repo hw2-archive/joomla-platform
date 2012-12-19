@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Google
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Google Picasa data class for the Joomla Platform.
@@ -53,7 +53,7 @@ class JGoogleDataPicasaAlbum extends JGoogleData
 	 * @return  boolean  Success or failure.
 	 *
 	 * @since   12.3
-	 * @throws UnexpectedValueException
+	 * @throws \UnexpectedValueException
 	 */
 	public function delete($match = '*')
 	{
@@ -82,7 +82,7 @@ class JGoogleDataPicasaAlbum extends JGoogleData
 
 			if ($jdata->body != '')
 			{
-				throw new UnexpectedValueException("Unexpected data received from Google: `{$jdata->body}`.");
+				throw new \UnexpectedValueException("Unexpected data received from Google: `{$jdata->body}`.");
 			}
 			$this->xml = null;
 
@@ -308,7 +308,7 @@ class JGoogleDataPicasaAlbum extends JGoogleData
 	 * @return  mixed  Data from Google
 	 *
 	 * @since   12.3
-	 * @throws UnexpectedValueException
+	 * @throws \UnexpectedValueException
 	 */
 	public function refresh()
 	{
@@ -332,7 +332,7 @@ class JGoogleDataPicasaAlbum extends JGoogleData
 	 * @return  mixed  Data from Google
 	 *
 	 * @since   12.3
-	 * @throws UnexpectedValueException
+	 * @throws \UnexpectedValueException
 	 */
 	public function listPhotos()
 	{
@@ -354,7 +354,7 @@ class JGoogleDataPicasaAlbum extends JGoogleData
 			}
 			else
 			{
-				throw new UnexpectedValueException("Unexpected data received from Google: `{$jdata->body}`.");
+				throw new \UnexpectedValueException("Unexpected data received from Google: `{$jdata->body}`.");
 			}
 		}
 		else
@@ -373,7 +373,7 @@ class JGoogleDataPicasaAlbum extends JGoogleData
 	 * @return  mixed  Data from Google
 	 *
 	 * @since   12.3
-	 * @throws UnexpectedValueException
+	 * @throws \UnexpectedValueException
 	 */
 	public function upload($file, $title = '', $summary = '')
 	{
@@ -424,7 +424,7 @@ class JGoogleDataPicasaAlbum extends JGoogleData
 	 * @return  mixed  Data from Google
 	 *
 	 * @since   12.3
-	 * @throws UnexpectedValueException
+	 * @throws \UnexpectedValueException
 	 */
 	protected function getMIME($file)
 	{

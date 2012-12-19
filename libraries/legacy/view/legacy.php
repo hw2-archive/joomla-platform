@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Legacy
  * @subpackage  View
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Base class for a Joomla View
@@ -241,7 +241,7 @@ class JViewLegacy extends JObject
 	 * $view->assign($obj);
 	 *
 	 * // Assign by object
-	 * $obj = new stdClass;
+	 * $obj = new \stdClass;
 	 * $obj->var1 = 'something';
 	 * $obj->var2 = 'else';
 	 * $view->assign($obj);

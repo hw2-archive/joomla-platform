@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Log
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Joomla! MySQL Database Log class
@@ -79,7 +79,7 @@ class JLogLoggerDatabase extends JLogLogger
 		// If both the database object and driver options are empty we want to use the system database connection.
 		if (empty($this->options['db_driver']))
 		{
-			$this->dbo = JFactory::getDBO();
+			$this->dbo = JFactory::getDbo();
 			$this->driver = null;
 			$this->host = null;
 			$this->user = null;

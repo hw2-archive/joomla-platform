@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Legacy
  * @subpackage  Pathway
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Class to maintain a pathway.
@@ -68,7 +68,7 @@ class JPathway
 			// Create a JPathway object
 			$classname = 'JPathway' . ucfirst($client);
 
-			if (!class_exists($classname))
+			if (!my_class_exists($classname))
 			{
 				JLog::add('Non-autoloadable JPathway subclasses are deprecated.', JLog::WARNING, 'deprecated');
 
@@ -86,7 +86,7 @@ class JPathway
 				}
 			}
 
-			if (class_exists($classname))
+			if (my_class_exists($classname))
 			{
 				self::$instances[$client] = new $classname($options);
 			}
@@ -212,7 +212,7 @@ class JPathway
 	 */
 	protected function _makeItem($name, $link)
 	{
-		$item = new stdClass;
+		$item = new \stdClass;
 		$item->name = html_entity_decode($name, ENT_COMPAT, 'UTF-8');
 		$item->link = $link;
 

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Table
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 jimport('joomla.filesystem.path');
 
@@ -172,7 +172,7 @@ abstract class JTable extends JObject
 	 * @return  mixed  An array of the field names, or false if an error occurs.
 	 *
 	 * @since   11.1
-	 * @throws  UnexpectedValueException
+	 * @throws  \UnexpectedValueException
 	 */
 	public function getFields()
 	{
@@ -186,7 +186,7 @@ abstract class JTable extends JObject
 
 			if (empty($fields))
 			{
-				throw new UnexpectedValueException(sprintf('No columns found for %s table', $name));
+				throw new \UnexpectedValueException(sprintf('No columns found for %s table', $name));
 			}
 			$cache = $fields;
 		}
@@ -215,7 +215,7 @@ abstract class JTable extends JObject
 		$tableClass = $prefix . ucfirst($type);
 
 		// Only try to load the class if it doesn't already exist.
-		if (!class_exists($tableClass))
+		if (!my_class_exists($tableClass))
 		{
 			// Search for the class file in the JTable include paths.
 			$path = JPath::find(self::addIncludePath(), strtolower($type) . '.php');
@@ -226,7 +226,7 @@ abstract class JTable extends JObject
 				include_once $path;
 
 				// If we were unable to load the proper class, raise a warning and return false.
-				if (!class_exists($tableClass))
+				if (!my_class_exists($tableClass))
 				{
 					JLog::add(JText::sprintf('JLIB_DATABASE_ERROR_CLASS_NOT_FOUND_IN_FILE', $tableClass), JLog::WARNING, 'jerror');
 
@@ -533,7 +533,7 @@ abstract class JTable extends JObject
 	 *
 	 * @link    http://docs.joomla.org/JTable/bind
 	 * @since   11.1
-	 * @throws  UnexpectedValueException
+	 * @throws  \UnexpectedValueException
 	 */
 	public function bind($src, $ignore = array())
 	{
@@ -584,7 +584,7 @@ abstract class JTable extends JObject
 	 * @link    http://docs.joomla.org/JTable/load
 	 * @since   11.1
 	 * @throws  RuntimeException
-	 * @throws  UnexpectedValueException
+	 * @throws  \UnexpectedValueException
 	 */
 	public function load($keys = null, $reset = true)
 	{
@@ -641,7 +641,7 @@ abstract class JTable extends JObject
 			// Check that $field is in the table.
 			if (!in_array($field, $fields))
 			{
-				throw new UnexpectedValueException(sprintf('Missing field in database: %s &#160; %s.', get_class($this), $field));
+				throw new \UnexpectedValueException(sprintf('Missing field in database: %s &#160; %s.', get_class($this), $field));
 			}
 			// Add the search tuple to the query.
 			$query->where($this->_db->quoteName($field) . ' = ' . $this->_db->quote($value));
@@ -858,7 +858,7 @@ abstract class JTable extends JObject
 	 *
 	 * @link    http://docs.joomla.org/JTable/delete
 	 * @since   11.1
-	 * @throws  UnexpectedValueException
+	 * @throws  \UnexpectedValueException
 	 */
 	public function delete($pk = null)
 	{
@@ -882,7 +882,7 @@ abstract class JTable extends JObject
 
 			if ($pk[$key] === null)
 			{
-				throw new UnexpectedValueException('Null primary key not allowed.');
+				throw new \UnexpectedValueException('Null primary key not allowed.');
 			}
 			$this->$key = $pk[$key];
 		}
@@ -970,7 +970,7 @@ abstract class JTable extends JObject
 
 			if ($pk[$key] === null)
 			{
-				throw new UnexpectedValueException('Null primary key not allowed.');
+				throw new \UnexpectedValueException('Null primary key not allowed.');
 			}
 		}
 
@@ -1032,7 +1032,7 @@ abstract class JTable extends JObject
 
 			if ($pk[$key] === null)
 			{
-				throw new UnexpectedValueException('Null primary key not allowed.');
+				throw new \UnexpectedValueException('Null primary key not allowed.');
 			}
 		}
 
@@ -1133,7 +1133,7 @@ abstract class JTable extends JObject
 
 			if ($pk[$key] === null)
 			{
-				throw new UnexpectedValueException('Null primary key not allowed.');
+				throw new \UnexpectedValueException('Null primary key not allowed.');
 			}
 		}
 
@@ -1180,7 +1180,7 @@ abstract class JTable extends JObject
 			return false;
 		}
 
-		$db = JFactory::getDBO();
+		$db = JFactory::getDbo();
 		$db->setQuery('SELECT COUNT(userid)' . ' FROM ' . $db->quoteName('#__session') . ' WHERE ' . $db->quoteName('userid') . ' = ' . (int) $against);
 		$checkedOut = (boolean) $db->loadResult();
 
@@ -1204,7 +1204,7 @@ abstract class JTable extends JObject
 		// If there is no ordering field set an error and return false.
 		if (!property_exists($this, 'ordering'))
 		{
-			throw new UnexpectedValueException(sprintf('%s does not support ordering.', get_class($this)));
+			throw new \UnexpectedValueException(sprintf('%s does not support ordering.', get_class($this)));
 		}
 
 		// Get the largest ordering value for a given where clause.
@@ -1264,7 +1264,7 @@ abstract class JTable extends JObject
 		// If there is no ordering field set an error and return false.
 		if (!property_exists($this, 'ordering'))
 		{
-			throw new UnexpectedValueException(sprintf('%s does not support ordering.', get_class($this)));
+			throw new \UnexpectedValueException(sprintf('%s does not support ordering.', get_class($this)));
 		}
 
 		$k = $this->_tbl_key;
@@ -1320,14 +1320,14 @@ abstract class JTable extends JObject
 	 *
 	 * @link    http://docs.joomla.org/JTable/move
 	 * @since   11.1
-	 * @throws  UnexpectedValueException
+	 * @throws  \UnexpectedValueException
 	 */
 	public function move($delta, $where = '')
 	{
 		// If there is no ordering field set an error and return false.
 		if (!property_exists($this, 'ordering'))
 		{
-			throw new UnexpectedValueException(sprintf('%s does not support ordering.', get_class($this)));
+			throw new \UnexpectedValueException(sprintf('%s does not support ordering.', get_class($this)));
 		}
 
 		// If the change is none, do nothing.

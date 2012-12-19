@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Document
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 jimport('joomla.environment.response');
 
@@ -279,7 +279,7 @@ class JDocument
 			// Determine the path and class
 			$class = 'JDocument' . $type;
 
-			if (!class_exists($class))
+			if (!my_class_exists($class))
 			{
 				$path = __DIR__ . '/' . $type . '/' . $type . '.php';
 
@@ -907,7 +907,7 @@ class JDocument
 	{
 		$class = 'JDocumentRenderer' . $type;
 
-		if (!class_exists($class))
+		if (!my_class_exists($class))
 		{
 			$path = __DIR__ . '/' . $this->_type . '/renderer/' . $type . '.php';
 
@@ -921,7 +921,7 @@ class JDocument
 			}
 		}
 
-		if (!class_exists($class))
+		if (!my_class_exists($class))
 		{
 			return null;
 		}

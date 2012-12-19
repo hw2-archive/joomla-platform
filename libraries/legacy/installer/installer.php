@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Installer
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 jimport('joomla.filesystem.file');
 jimport('joomla.filesystem.folder');
@@ -956,7 +956,7 @@ class JInstaller extends JAdapter
 	{
 		if ($eid && $schema)
 		{
-			$db = JFactory::getDBO();
+			$db = JFactory::getDbo();
 			$schemapaths = $schema->children();
 
 			if (!$schemapaths)
@@ -1030,7 +1030,7 @@ class JInstaller extends JAdapter
 		// Ensure we have an XML element and a valid extension id
 		if ($eid && $schema)
 		{
-			$db = JFactory::getDBO();
+			$db = JFactory::getDbo();
 			$schemapaths = $schema->children();
 
 			if (count($schemapaths))
@@ -1943,7 +1943,7 @@ class JInstaller extends JAdapter
 	 */
 	public function cleanDiscoveredExtension($type, $element, $folder = '', $client = 0)
 	{
-		$dbo = JFactory::getDBO();
+		$dbo = JFactory::getDbo();
 		$query = $dbo->getQuery(true);
 		$query->delete($dbo->quoteName('#__extensions'));
 		$query->where('type = ' . $dbo->Quote($type));

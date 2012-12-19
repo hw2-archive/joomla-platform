@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Legacy
  * @subpackage  Application
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Application helper functions
@@ -77,7 +77,7 @@ class JApplicationHelper
 		// Only create the array if it does not exist
 		if (self::$_clients === null)
 		{
-			$obj = new stdClass;
+			$obj = new \stdClass;
 
 			// Site Client
 			$obj->id = 0;

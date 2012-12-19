@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Pagination
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Pagination Class. Provides a common interface for content pagination for the
@@ -662,7 +662,7 @@ class JPagination
 	 */
 	protected function _buildDataObject()
 	{
-		$data = new stdClass;
+		$data = new \stdClass;
 
 		// Build the additional URL parameters string.
 		$params = '';

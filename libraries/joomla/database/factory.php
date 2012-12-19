@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Database
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Joomla Platform Database Factory class
@@ -53,7 +53,7 @@ class JDatabaseFactory
 		$class = 'JDatabaseDriver' . ucfirst(strtolower($options['driver']));
 
 		// If the class still doesn't exist we have nothing left to do but throw an exception.  We did our best.
-		if (!class_exists($class))
+		if (!my_class_exists($class))
 		{
 			throw new RuntimeException(sprintf('Unable to load Database Driver: %s', $options['driver']));
 		}
@@ -88,7 +88,7 @@ class JDatabaseFactory
 		$class = 'JDatabaseExporter' . ucfirst(strtolower($name));
 
 		// Make sure we have an exporter class for this driver.
-		if (!class_exists($class))
+		if (!my_class_exists($class))
 		{
 			// If it doesn't exist we are at an impasse so throw an exception.
 			throw new RuntimeException('Database Exporter not found.');
@@ -121,7 +121,7 @@ class JDatabaseFactory
 		$class = 'JDatabaseImporter' . ucfirst(strtolower($name));
 
 		// Make sure we have an importer class for this driver.
-		if (!class_exists($class))
+		if (!my_class_exists($class))
 		{
 			// If it doesn't exist we are at an impasse so throw an exception.
 			throw new RuntimeException('Database importer not found.');
@@ -166,7 +166,7 @@ class JDatabaseFactory
 		$class = 'JDatabaseQuery' . ucfirst(strtolower($name));
 
 		// Make sure we have a query class for this driver.
-		if (!class_exists($class))
+		if (!my_class_exists($class))
 		{
 			// If it doesn't exist we are at an impasse so throw an exception.
 			throw new RuntimeException('Database Query class not found');

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Mail
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 jimport('phpmailer.phpmailer');
 
@@ -76,7 +76,7 @@ class JMail extends PHPMailer
 	{
 		if (($this->Mailer == 'mail') && !function_exists('mail'))
 		{
-			if (class_exists('JError'))
+			if (my_class_exists('JError'))
 			{
 				return JError::raiseNotice(500, JText::_('JLIB_MAIL_FUNCTION_DISABLED'));
 			}
@@ -90,7 +90,7 @@ class JMail extends PHPMailer
 
 		if ($result == false)
 		{
-			if (class_exists('JError'))
+			if (my_class_exists('JError'))
 			{
 				$result = JError::raiseNotice(500, JText::_($this->ErrorInfo));
 			}
@@ -137,7 +137,7 @@ class JMail extends PHPMailer
 		else
 		{
 			// If it's neither we throw an exception
-			throw new UnexpectedValueException(sprintf('Invalid email Sender: %s, JMail::setSender(%s)', $from));
+			throw new \UnexpectedValueException(sprintf('Invalid email Sender: %s, JMail::setSender(%s)', $from));
 		}
 
 		return $this;

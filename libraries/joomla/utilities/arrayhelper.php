@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Utilities
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * JArrayHelper is an array utility class for doing all sorts of odds and ends with arrays.
@@ -88,7 +88,7 @@ abstract class JArrayHelper
 	}
 
 	/**
-	 * Utility function to map an array to a stdClass object.
+	 * Utility function to map an array to a \stdClass object.
 	 *
 	 * @param   array   &$array  The array to map.
 	 * @param   string  $class   Name of the class to create
@@ -97,7 +97,7 @@ abstract class JArrayHelper
 	 *
 	 * @since   11.1
 	 */
-	public static function toObject(&$array, $class = 'stdClass')
+	public static function toObject(&$array, $class = '\stdClass')
 	{
 		$obj = null;
 

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /*~ class.pop3.php
 .---------------------------------------------------------------------------.
 |  Software: PHPMailer - PHP email class                                    |

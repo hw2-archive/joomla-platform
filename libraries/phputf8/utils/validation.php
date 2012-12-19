@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
 * @version $Id$
 * Tools for validing a UTF-8 string is well formed.

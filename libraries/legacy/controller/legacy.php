@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Legacy
  * @subpackage  Controller
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Base class for a Joomla Controller
@@ -278,7 +278,7 @@ class JControllerLegacy extends JObject
 		$class = ucfirst($prefix) . 'Controller' . ucfirst($type);
 
 		// Include the class if not present.
-		if (!class_exists($class))
+		if (!my_class_exists($class))
 		{
 			// If the controller file path exists, include it.
 			if (file_exists($path))
@@ -296,7 +296,7 @@ class JControllerLegacy extends JObject
 		}
 
 		// Instantiate the class.
-		if (class_exists($class))
+		if (my_class_exists($class))
 		{
 			self::$instance = new $class($config);
 		}
@@ -326,7 +326,7 @@ class JControllerLegacy extends JObject
 		$this->redirect = null;
 		$this->taskMap = array();
 
-		if (defined('JDEBUG') && JDEBUG)
+		if (my_defined('JDEBUG') && JDEBUG)
 		{
 			JLog::addLogger(array('text_file' => 'jcontroller.log.php'), JLog::ALL, array('controller'));
 		}
@@ -519,7 +519,7 @@ class JControllerLegacy extends JObject
 
 			$result = in_array((int) $id, $values);
 
-			if (defined('JDEBUG') && JDEBUG)
+			if (my_defined('JDEBUG') && JDEBUG)
 			{
 				JLog::add(
 					sprintf(
@@ -595,7 +595,7 @@ class JControllerLegacy extends JObject
 		// Build the view class name
 		$viewClass = $classPrefix . $viewName;
 
-		if (!class_exists($viewClass))
+		if (!my_class_exists($viewClass))
 		{
 			jimport('joomla.filesystem.path');
 			$path = JPath::find($this->paths['view'], $this->createFileName('view', array('name' => $viewName, 'type' => $viewType)));
@@ -604,7 +604,7 @@ class JControllerLegacy extends JObject
 			{
 				require_once $path;
 
-				if (!class_exists($viewClass))
+				if (!my_class_exists($viewClass))
 				{
 					throw new Exception(JText::sprintf('JLIB_APPLICATION_ERROR_VIEW_CLASS_NOT_FOUND', $viewClass, $path), 500);
 				}
@@ -667,7 +667,7 @@ class JControllerLegacy extends JObject
 				}
 				else
 				{
-					$registeredurlparams = new stdClass;
+					$registeredurlparams = new \stdClass;
 				}
 
 				foreach ($urlparams as $key => $value)
@@ -890,7 +890,7 @@ class JControllerLegacy extends JObject
 			$values = array_unique($values);
 			$app->setUserState($context . '.id', $values);
 
-			if (defined('JDEBUG') && JDEBUG)
+			if (my_defined('JDEBUG') && JDEBUG)
 			{
 				JLog::add(
 					sprintf(
@@ -999,7 +999,7 @@ class JControllerLegacy extends JObject
 			unset($values[$index]);
 			$app->setUserState($context . '.id', $values);
 
-			if (defined('JDEBUG') && JDEBUG)
+			if (my_defined('JDEBUG') && JDEBUG)
 			{
 				JLog::add(
 					sprintf(

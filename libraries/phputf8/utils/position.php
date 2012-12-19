@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
 * Locate a byte index given a UTF-8 character index
 * @version $Id$

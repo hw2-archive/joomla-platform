@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Updater
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 jimport('joomla.updater.updateadapter');
 
@@ -229,7 +229,7 @@ class JUpdaterCollection extends JUpdateAdapter
 			$url .= 'update.xml';
 		}
 
-		$this->base = new stdClass;
+		$this->base = new \stdClass;
 		$this->update_sites = array();
 		$this->updates = array();
 		$dbo = $this->parent->getDBO();

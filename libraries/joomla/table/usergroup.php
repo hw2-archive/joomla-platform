@@ -1,4 +1,4 @@
-<?php
+<?php namespace Hwj;
 /**
  * @package     Joomla.Platform
  * @subpackage  Table
@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
-defined('JPATH_PLATFORM') or die;
+my_defined('JPATH_PLATFORM') or die;
 
 /**
  * Usergroup table class.
@@ -146,7 +146,7 @@ class JTableUsergroup extends JTable
 	 *
 	 * @since   11.1
 	 * @throws  RuntimeException on database error.
-	 * @throws  UnexpectedValueException on data error.
+	 * @throws  \UnexpectedValueException on data error.
 	 */
 	public function delete($oid = null)
 	{
@@ -156,15 +156,15 @@ class JTableUsergroup extends JTable
 		}
 		if ($this->id == 0)
 		{
-			throw new UnexpectedValueException('Global Category not found');
+			throw new \UnexpectedValueException('Global Category not found');
 		}
 		if ($this->parent_id == 0)
 		{
-			throw new UnexpectedValueException('Root categories cannot be deleted.');
+			throw new \UnexpectedValueException('Root categories cannot be deleted.');
 		}
 		if ($this->lft == 0 || $this->rgt == 0)
 		{
-			throw new UnexpectedValueException('Left-Right data inconsistency. Cannot delete usergroup.');
+			throw new \UnexpectedValueException('Left-Right data inconsistency. Cannot delete usergroup.');
 		}
 
 		$db = $this->_db;
@@ -180,7 +180,7 @@ class JTableUsergroup extends JTable
 
 		if (empty($ids))
 		{
-			throw new UnexpectedValueException('Left-Right data inconsistency. Cannot delete usergroup.');
+			throw new \UnexpectedValueException('Left-Right data inconsistency. Cannot delete usergroup.');
 		}
 
 		// Delete the category dependencies
